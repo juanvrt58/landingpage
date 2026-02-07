@@ -1,0 +1,578 @@
+<!-- =========================
+File: index.html
+Landing page - Roble Pizzas
+Notas:
+- Solo estructura + SEO + enlaces a CSS/JS.
+- Ajusta: dominio, redes, email, teléfono, imágenes.
+========================= -->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Roble Pizzas | Catering de pizzas en vivo para eventos en Santiago</title>
+  <meta name="description" content="Roble Pizzas: catering de pizzas en vivo con nivel banquetero, montaje impecable y flexibilidad real. Partner confiable para productoras y banqueteras (50–150 personas) en Santiago." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://tudominio.cl/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Roble Pizzas | Pizzas en vivo y sin estrés" />
+  <meta property="og:description" content="Catering de pizzas en vivo para productoras y banqueteras. Operación impecable, flexibilidad total y servicio completo en Santiago." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.roblepizzas.cl/" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1548365328-9f547fcf5a8c?auto=format&fit=crop&w=1200&q=80" />
+
+ 
+  <!-- Favicon (emoji temporal) -->
+ 
+  <!-- Fonts (Montserrat + alternativa elegante para titulares) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- JSON-LD Schema (edita teléfonos, url, etc.) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FoodEstablishment",
+    "name": "Roble Pizzas",
+    "description": "Catering de pizzas en vivo para productoras y banqueteras en Santiago. Operación impecable y servicio completo para eventos de 50 a 150 personas.",
+    "servesCuisine": ["Italian", "Pizza"],
+    "areaServed": "Santiago, Chile",
+    "url": "https://www.roblepizzas.cl/",
+    "image": "https://images.unsplash.com/photo-1548365328-9f547fcf5a8c?auto=format&fit=crop&w=1200&q=80",
+    "priceRange": "$$",
+    "sameAs": [
+      "https://www.instagram.com/roblepizzas"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- =========================
+  HEADER STICKY (NAV)
+  - Desktop: links visibles
+  - Mobile: botón "Menú" abre panel
+  ========================= -->
+  <div class="topbar">
+    <div class="container">
+      <div class="nav" aria-label="Navegación principal">
+        <a class="brand" href="#top" aria-label="Ir al inicio">
+          <div class="brand__name">Roble</div>
+          <div class="brand__tag">PIZZAS</div>
+        </a>
+
+        <nav class="navlinks" aria-label="Secciones">
+          <a href="#como-funciona">Cómo funciona</a>
+          <a href="#por-que-roble">Por qué Roble</a>
+          <a href="#eventos-roble">Eventos</a>
+          <a href="#galeria">Galería</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+
+        <div class="navcta">
+          <button class="burger" id="burger" aria-expanded="false" aria-controls="mobilePanel">Menú</button>
+          <a class="btn btn--ghost" href="#contacto">Cotizar</a>
+          <a class="btn btn--primary" id="whatsBtnTop" href="#" rel="nofollow">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="mobilePanel" id="mobilePanel">
+        <div class="container">
+          <a href="#como-funciona" class="mLink">Cómo funciona</a>
+          <a href="#por-que-roble" class="mLink">Por qué Roble</a>
+           <a href="#galeria" class="mLink">Galería</a>
+          <a href="#faq" class="mLink">FAQ</a>
+          <a href="#contacto" class="mLink">Contacto</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+    <!-- =========================
+    HERO
+    - Promesa fuerte + CTA
+    - Imagen Unsplash (editable)
+    ========================= -->
+    <header class="hero">
+      <div class="container">
+        <div class="heroGrid">
+          <div>
+            <div class="h-eyebrow">
+              <span class="pill">Partner confiable para productoras</span>
+              <span class="badge">Eventos 50–150 personas</span>
+            </div>
+
+            <h1>
+              Catering de <span class="accent">pizzas en vivo</span> con nivel banquetero,
+              para que tu evento salga impecable.
+            </h1>
+
+            <p class="lead">
+              Roble Pizzas es el equipo que llega, monta y sirve con operación profesional.
+              Tú coordinas el evento. Nosotros resolvemos la experiencia gastronómica.
+            </p>
+
+            <div class="heroCtas">
+              <a class="btn btn--primary" href="#contacto">Pedir cotización</a>
+              <a class="btn btn--ghost" href="#como-funciona">Ver cómo funciona</a>
+            </div>
+
+            <div class="trustRow" aria-label="Beneficios rápidos">
+              <div class="trustItem">
+                <div class="icon">✓</div>
+                <div>
+                  <b>Montaje completo</b>
+                  <span>Hornos, stand, mantelería, utensilios.</span>
+                </div>
+              </div>
+              <div class="trustItem">
+                <div class="icon">⏱</div>
+                <div>
+                  <b>Flexibilidad real</b>
+                  <span>Nos adaptamos a cambios de horario.</span>
+                </div>
+              </div>
+              <div class="trustItem">
+                <div class="icon">🤝</div>
+                <div>
+                  <b>Equipo aliado</b>
+                  <span>Operamos como parte de tu producción.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="heroCard" aria-label="Resumen visual">
+            <div class="heroImg" role="img" aria-label="Pizza artesanal en vivo (imagen Unsplash)"></div>
+            <div class="heroCardBody">
+              <div class="miniTitle">Pizzas en vivo y sin estrés</div>
+              <p>
+                Servicio pensado para productoras emergentes: limpieza, puntualidad, y una experiencia que hace
+                quedar bien a tu equipo frente al cliente final.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </header>
+
+    <!-- =========================
+    SECCIÓN: CÓMO FUNCIONA
+    ========================= -->
+    <section id="como-funciona">
+      <div class="container">
+        <div class="sectionTitle">
+          <div>
+            <h2>Cómo funciona</h2>
+            <p>Un flujo simple, diseñado para producción: confirmamos, montamos, servimos y cerramos impecable.</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>1) Coordinación</h3>
+            <p>Definimos asistentes, horario, lugar, restricciones y formato. Te enviamos propuesta clara y cerrada.</p>
+          </article>
+          <article class="card">
+            <h3>2) Montaje profesional</h3>
+            <p>Llegamos con stand completo, hornos, mesas, manteles y mise en place. Todo limpio, ordenado y pro.</p>
+          </article>
+          <article class="card">
+            <h3>3) Servicio en vivo</h3>
+            <p>Masa preparada en vivo + flujo continuo de pizzas. Opcional: garzones, barra y personal extra.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+    SECCIÓN: POR QUÉ ROBLE
+    ========================= -->
+    <section id="por-que-roble">
+      <div class="container">
+        <div class="sectionTitle">
+          <div>
+            <h2>Por qué Roble</h2>
+            <p>Porque en un evento, el proveedor correcto no es un extra: es parte del éxito.</p>
+          </div>
+          <div class="pill">Cercano • Profesional • Resolutivo</div>
+        </div>
+
+        <div class="split">
+          <div class="card">
+            <h3>Nuestra promesa</h3>
+            <ul class="list">
+              <li><b>Operación impecable:</b> montaje limpio, flujo ordenado y cierre correcto.</li>
+              <li><b>Flexibilidad:</b> eventos cambian; nosotros respondemos.</li>
+              <li><b>Partner de producción:</b> trabajamos para que tú quedes excelente ante tu cliente.</li>
+              <li><b>Servicio completo:</b> hornos, stand, insumos, utensilios, gas y transporte.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Lo que evitamos (y tú también)</h3>
+            <ul class="list">
+              <li>Proveedor informal que llega tarde o “a medias”.</li>
+              <li>Montaje improvisado que se ve barato.</li>
+              <li>Falta de respuesta ante cambios de horario.</li>
+              <li>Experiencia que arruina la imagen de una productora emergente.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="spacer-14"></div>
+
+        <div class="ctaBand">
+          <div>
+            <h3>¿Necesitas un proveedor que no falle?</h3>
+            <p>Cuéntanos tu evento y te respondemos con una propuesta clara, rápida y profesional.</p>
+          </div>
+          <div class="ctaBand__actions">
+            <a class="btn btn--primary" href="#contacto">Cotizar ahora</a>
+            <a class="btn btn--ghost" id="whatsBtnMid" href="#" rel="nofollow">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+    SECCIÓN: PACKS
+    - "Referenciales": se ajustan en cotización real
+    ========================= -->
+    <!-- =========================
+SECCIÓN: CÓMO SON LOS EVENTOS ROBLE
+Reemplaza completamente la antigua sección de "packs"
+Objetivo:
+- Mostrar el flujo real de un evento
+- Enfatizar operación, confianza y experiencia en vivo
+========================= -->
+
+<section id="eventos-roble">
+  <div class="container">
+    <div class="sectionTitle">
+      <div>
+        <h2>Así funcionan los eventos con Roble</h2>
+        <p>
+          No somos un “pack”. Somos un equipo operativo que llega, monta y resuelve.
+          Así se vive la experiencia Roble Pizzas en un evento real.
+        </p>
+      </div>
+    </div>
+
+    <div class="packages">
+
+      <!-- Paso 1 -->
+      <article class="pack">
+        <h3>1) Cotización y presupuesto</h3>
+        <p class="sub">
+          Antes del evento, definimos todo contigo para que no existan sorpresas.
+        </p>
+
+        <ul class="list">
+          <li>Confirmamos asistentes (50–150)</li>
+          <li>Horario exacto y tiempos de servicio</li>
+          <li>Restricciones alimentarias y menú</li>
+          <li>Extras: garzones, barra o personal adicional</li>
+        </ul>
+      </article>
+
+      <!-- Paso 2 -->
+      <article class="pack pack--featured">
+        <h3>2) Montaje impecable</h3>
+        <p class="sub">
+          Llegamos con stand completo y estética premium, listos para operar.
+        </p>
+
+        <ul class="list">
+          <li>Hornos, mesas, mantelería y utensilios</li>
+          <li>Montaje limpio y ordenado (nivel banquetero)</li>
+          <li>Equipo preparado antes de que lleguen los invitados</li>
+          <li>Operación silenciosa y profesional</li>
+        </ul>
+      </article>
+
+      <!-- Paso 3 -->
+      <article class="pack">
+        <h3>3) Servicio en vivo</h3>
+        <p class="sub">
+          La experiencia principal: pizzas artesanales saliendo en tiempo real.
+        </p>
+
+        <ul class="list">
+          <li>Masa preparada en vivo</li>
+          <li>Flujo continuo durante todo el servicio</li>
+          <li>Atención rápida y cálida</li>
+          <li>Una experiencia que eleva el evento</li>
+        </ul>
+      </article>
+
+      <!-- Paso 4 -->
+      <article class="pack">
+        <h3>4) Flexibilidad total</h3>
+        <p class="sub">
+          En eventos siempre hay cambios. Roble responde como partner, no como proveedor externo.
+        </p>
+
+        <ul class="list">
+          <li>Adaptación ante cambios de horario</li>
+          <li>Soluciones rápidas ante imprevistos</li>
+          <li>Refuerzo de personal si se necesita</li>
+          <li>Compromiso real con la productora</li>
+        </ul>
+      </article>
+
+      <!-- Paso 5 -->
+      <article class="pack">
+        <h3>5) Cierre limpio y profesional</h3>
+        <p class="sub">
+          Terminamos el servicio como corresponde: orden, limpieza y cero carga para tu equipo.
+        </p>
+
+        <ul class="list">
+          <li>Retiro completo del stand</li>
+          <li>Espacio limpio al finalizar</li>
+          <li>Operación cerrada sin estrés</li>
+          <li>Productora tranquila, cliente feliz</li>
+        </ul>
+      </article>
+
+    </div>
+
+    <div class="spacer-14"></div>
+
+    <!-- Testimonio -->
+    <div class="quote">
+      <p>
+        “Roble funciona como un brazo operativo: llegan, montan, atienden y cierran
+        sin que yo tenga que estar encima.”
+      </p>
+      <b>— Productora boutique (reemplazar por testimonio real)</b>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+SECCIÓN: GALERÍA (Carrusel)
+Pega esto donde quieras mostrar fotos (ideal: después del Hero o después de “Así funcionan los eventos…”)
+
+Requisitos en index.html:
+1) Tener <script src="./app.js" defer></script>
+2) Agregar el CSS y JS de abajo.
+3) Reemplazar las URLs de las imágenes por las tuyas.
+========================= -->
+<section id="galeria">
+  <div class="container">
+    <div class="sectionTitle">
+      <div>
+        <h2>Galería de eventos</h2>
+        <p>Montaje impecable, pizzas en vivo y una experiencia que hace quedar bien a la productora.</p>
+      </div>
+      <div class="pill">Roble en acción</div>
+    </div>
+
+    <div class="carousel" aria-label="Carrusel de imágenes Roble">
+      <!-- Botón anterior -->
+      <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Imagen anterior" data-carousel-prev>
+        ‹
+      </button>
+
+      <!-- Viewport (lo que se desplaza) -->
+      <div class="carousel__viewport" data-carousel-viewport tabindex="0" aria-roledescription="carrusel">
+        <div class="carousel__track" data-carousel-track>
+          <!-- Slide 1 -->
+          <figure class="carousel__slide">
+            <img
+              src="./img/carrusel/images.jpg"
+              alt="Pizza artesanal recién salida del horno"
+              loading="lazy"
+            />
+            <figcaption>Pizzas en vivo (flujo continuo)</figcaption>
+          </figure>
+
+          <!-- Slide 2 -->
+          <figure class="carousel__slide">
+            <img
+              src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=80"
+              alt="Montaje de catering con estética limpia y premium"
+              loading="lazy"
+            />
+            <figcaption>Montaje limpio y nivel banquetero</figcaption>
+          </figure>
+
+          <!-- Slide 3 -->
+          <figure class="carousel__slide">
+            <img
+              src="https://images.unsplash.com/photo-1528137871618-79d2761e3fd5?auto=format&fit=crop&w=1600&q=80"
+              alt="Ingredientes frescos para pizzas"
+              loading="lazy"
+            />
+            <figcaption>Ingredientes frescos y operación ordenada</figcaption>
+          </figure>
+
+          <!-- Slide 4 -->
+          <figure class="carousel__slide">
+            <img
+              src="https://images.unsplash.com/photo-1600628422019-7b38e3d8f49a?auto=format&fit=crop&w=1600&q=80"
+              alt="Servicio de pizzas en evento"
+              loading="lazy"
+            />
+            <figcaption>Experiencia que eleva el evento</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Botón siguiente -->
+      <button class="carousel__btn carousel__btn--next" type="button" aria-label="Imagen siguiente" data-carousel-next>
+        ›
+      </button>
+    </div>
+
+    <!-- Dots -->
+    <div class="carouselDots" aria-label="Navegación del carrusel" data-carousel-dots></div>
+  </div>
+</section>
+
+
+    <!-- =========================
+    FAQ
+    ========================= -->
+    <section id="faq">
+      <div class="container">
+        <div class="sectionTitle">
+          <div>
+            <h2>Preguntas frecuentes</h2>
+            <p>Respuestas claras para que puedas vender esto a tu cliente final sin fricción.</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>¿Qué incluye el servicio?</h3>
+            <p>Stand completo, hornos, mesas, manteles, utensilios, servilletas, insumos base, gas y transporte. Extras opcionales: garzones, barra, personal extra.</p>
+          </article>
+          <article class="card">
+            <h3>¿Se adaptan a cambios de horario?</h3>
+            <p>Sí. La flexibilidad es parte del servicio: coordinamos contigo para ajustar sin caos (según condiciones del evento y logística).</p>
+          </article>
+          <article class="card">
+            <h3>¿Para cuántas personas es ideal?</h3>
+            <p>Nuestro foco son eventos boutique de <b>50 a 150 personas</b>, donde la operación y la imagen importan.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+    CONTACTO
+    - Formulario abre WhatsApp con mensaje listo.
+    - Fallback: mailto
+    ========================= -->
+    <section id="contacto">
+      <div class="container">
+        <div class="sectionTitle">
+          <div>
+            <h2>Cotiza tu evento</h2>
+            <p>Respuesta rápida y propuesta clara. Tu evento, nuestro compromiso.</p>
+          </div>
+        </div>
+
+        <div class="contact">
+          <div class="form">
+            <form id="quoteForm" novalidate>
+              <div class="field">
+                <label for="name">Nombre</label>
+                <input id="name" name="name" autocomplete="name" placeholder="Ej: Valentina Pérez" required />
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@productora.cl" required />
+              </div>
+
+              <div class="field">
+                <label for="phone">WhatsApp</label>
+                <input id="phone" name="phone" inputmode="tel" placeholder="+56 9 1234 5678" required />
+              </div>
+
+              <div class="field">
+                <label for="guests">Asistentes</label>
+                <select id="guests" name="guests" required>
+                  <option value="" selected disabled>Selecciona…</option>
+                  <option>50</option>
+                  <option>80–100</option>
+                  <option>120–150</option>
+                  <option>Más de 150</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="date">Fecha del evento</label>
+                <input id="date" name="date" type="date" required />
+              </div>
+
+              <div class="field">
+                <label for="msg">Cuéntanos el evento</label>
+                <textarea id="msg" name="msg" placeholder="Lugar, horario, tipo de evento, si necesitas garzones/barra, etc." required></textarea>
+              </div>
+
+              <button class="btn btn--primary" type="submit">Enviar cotización</button>
+              <p class="note">
+                Al enviar, se abrirá tu WhatsApp (recomendado) o tu email con el mensaje listo.
+                Ajusta los datos de contacto en <b>app.js</b>.
+              </p>
+            </form>
+          </div>
+
+          <div>
+            <div class="card card--auto">
+              <h3>Contacto directo</h3>
+              <p class="card__text">
+                Si estás contra el tiempo, escríbenos y lo resolvemos:
+              </p>
+              <div class="actions">
+                <a class="btn btn--primary" id="whatsBtnBottom" href="https://wa.me/123456789" rel="nofollow">WhatsApp</a>
+                <a class="btn btn--ghost" id="mailBtn" href="#">Email</a>
+              </div>
+              <div class="spacer-10"></div>
+              <p class="meta">
+                <b>Zona:</b> Santiago, Chile<br>
+                <b>Especialidad:</b> Pizzas en vivo (50–150 asistentes)<br>
+                <b>Valores:</b> Confianza, calidad, cercanía, excelencia operativa
+              </p>
+            </div>
+
+            <div class="spacer-14"></div>
+
+            <div class="card card--auto">
+              <h3>Para productoras (copy listo)</h3>
+              <p class="meta">
+                “Roble Pizzas: catering en vivo con montaje profesional y flexibilidad real.
+                Operamos como parte de tu equipo para que tú quedes excelente frente al cliente final.”
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          © <span id="year"></span> Roble Pizzas. Todos los derechos reservados.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast (mensajes breves) -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- JS -->
+  <script src="app.js"></script>
+</body>
+</html>
