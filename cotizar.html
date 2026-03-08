@@ -355,6 +355,11 @@
                 <input type="date" id="fecha" oninput="actualizarResumen()" />
               </div>
               <div class="field">
+  <label>Hora de la primera pizza *</label>
+  <input type="time" id="horaPrimeraPizza" oninput="actualizarResumen()" />
+  <span class="hint">La hora en que quieres que salga la primera pizza.</span>
+</div>
+              <div class="field">
                 <label>Teléfono de contacto *</label>
                 <input type="tel" id="telefono" placeholder="+56 9 XXXX XXXX" oninput="actualizarResumen()" />
               </div>
@@ -448,6 +453,10 @@
               <span class="res-label">Fecha</span>
               <span class="res-value" id="res-fecha">—</span>
             </div>
+            <div class="res-row">
+  <span class="res-label">Primera pizza</span>
+  <span class="res-value" id="res-hora-primera-pizza">—</span>
+</div>
             <div class="res-row">
               <span class="res-label">Lugar</span>
               <span class="res-value" id="res-comuna">—</span>
@@ -621,42 +630,46 @@
   }
 
   function actualizarResumen() {
-    const nombre = document.getElementById('nombre').value.trim();
-    const tipo   = document.getElementById('tipo').value;
-    const inv    = parseInt(document.getElementById('invitados').value) || 0;
-    const fecha  = document.getElementById('fecha').value;
-    const comuna = document.getElementById('comuna').value.trim();
+  const nombre = document.getElementById('nombre').value.trim();
+  const tipo   = document.getElementById('tipo').value;
+  const inv    = parseInt(document.getElementById('invitados').value) || 0;
+  const fecha  = document.getElementById('fecha').value;
+  const horaPrimeraPizza = document.getElementById('horaPrimeraPizza').value;
+  const comuna = document.getElementById('comuna').value.trim();
 
-    document.getElementById('res-nombre').textContent = nombre || '—';
-    document.getElementById('res-tipo').textContent   = tipo   || '—';
-    document.getElementById('res-comuna').textContent = comuna || '—';
+  document.getElementById('res-nombre').textContent = nombre || '—';
+  document.getElementById('res-tipo').textContent   = tipo || '—';
+  document.getElementById('res-comuna').textContent = comuna || '—';
 
-    if (fecha) {
-      const d = new Date(fecha + 'T12:00:00');
-      document.getElementById('res-fecha').textContent =
-        d.toLocaleDateString('es-CL', { day:'numeric', month:'long', year:'numeric' });
-    } else {
-      document.getElementById('res-fecha').textContent = '—';
-    }
-
-    if (inv < 15) {
-      ['res-invitados','res-pizzas','res-pedazos','res-precio-pp','res-total','res-anticipo','res-resto']
-        .forEach(id => { document.getElementById(id).textContent = '—'; });
-      return;
-    }
-
-    const minPizzas = calcularPizzasMinimas(inv);
-    const preciopp  = obtenerPrecio(inv);
-    const total     = preciopp * inv;
-
-    document.getElementById('res-invitados').textContent = `${inv} personas`;
-    document.getElementById('res-pizzas').textContent    = `${minPizzas} pizzas de referencia`;
-    document.getElementById('res-pedazos').textContent   = `Servicio ilimitado 🎁`;
-    document.getElementById('res-precio-pp').textContent = `${formatCLP(preciopp)} / persona`;
-    document.getElementById('res-total').textContent     = formatCLP(total);
-    document.getElementById('res-anticipo').textContent  = formatCLP(total * 0.4);
-    document.getElementById('res-resto').textContent     = formatCLP(total * 0.6);
+  if (fecha) {
+    const d = new Date(fecha + 'T12:00:00');
+    document.getElementById('res-fecha').textContent =
+      d.toLocaleDateString('es-CL', { day:'numeric', month:'long', year:'numeric' });
+  } else {
+    document.getElementById('res-fecha').textContent = '—';
   }
+
+  document.getElementById('res-hora-primera-pizza').textContent =
+    horaPrimeraPizza || '—';
+
+  if (inv < 15) {
+    ['res-invitados','res-pizzas','res-pedazos','res-precio-pp','res-total','res-anticipo','res-resto']
+      .forEach(id => { document.getElementById(id).textContent = '—'; });
+    return;
+  }
+
+  const minPizzas = calcularPizzasMinimas(inv);
+  const preciopp  = obtenerPrecio(inv);
+  const total     = preciopp * inv;
+
+  document.getElementById('res-invitados').textContent = `${inv} personas`;
+  document.getElementById('res-pizzas').textContent    = `${minPizzas} pizzas de referencia`;
+  document.getElementById('res-pedazos').textContent   = `Servicio ilimitado 🎁`;
+  document.getElementById('res-precio-pp').textContent = `${formatCLP(preciopp)} / persona`;
+  document.getElementById('res-total').textContent     = formatCLP(total);
+  document.getElementById('res-anticipo').textContent  = formatCLP(total * 0.4);
+  document.getElementById('res-resto').textContent     = formatCLP(total * 0.6);
+}
 
   function enviarWsp(e) {
     e.preventDefault();
