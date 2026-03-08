@@ -1,723 +1,1218 @@
-<!DOCTYPE html>
-<html lang="es-CL">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
-  <!-- ══ SEO PRIMARIO ══ -->
-  <title>Roble Pizzas | Pizza Napolitana para Eventos en Santiago, Chile</title>
-  <meta name="description" content="Roble Pizzas: pizzería napolitana móvil para matrimonios, cumpleaños y eventos corporativos en Santiago. Masa de fermentación lenta 36–42h, horno a 480°, pizzas ilimitadas y servicio completo. Cotiza sin compromiso." />
-  <meta name="keywords" content="pizza napolitana eventos Santiago, pizza para matrimonios Santiago, pizzería móvil Chile, catering pizza artesanal, pizza para cumpleaños Santiago, pizza corporativa Santiago, horno napolitano eventos, Roble Pizzas, pizza fermentación lenta, pizza para eventos Chile" />
-  <meta name="author" content="Juan Vial — Roble Pizzas" />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="googlebot" content="index, follow" />
-  <meta name="theme-color" content="#3E2A1F" />
-  <meta name="language" content="es" />
-  <meta name="geo.region" content="CL-RM" />
-  <meta name="geo.placename" content="Santiago, Chile" />
+:root {
+  --roble: #16100B;
+  --roble-2: #24170F;
+  --madera: #A86A3D;
+  --madera-suave: #C89A74;
+  --acento: #B86B2F;
+  --fondo: #F6F2EC;
+  --fondo-alt: #EEE7DD;
+  --blanco: #FCFAF7;
+  --texto: #201813;
+  --texto-suave: #6A5646;
+  --borde: rgba(168,106,61,0.16);
+  --sombra: 0 12px 40px rgba(22,16,11,0.08);
+  --sombra-hover: 0 18px 50px rgba(22,16,11,0.12);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --transicion: all 0.32s ease;
+}
 
-  <!-- ══ CANONICAL ══ -->
-  <link rel="canonical" href="https://cortecasero.cl/" />
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <!-- ══ FAVICONS ══ -->
-  <link rel="icon" href="/favicon.png" sizes="any" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 
-  <!-- ══ OPEN GRAPH ══ -->
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="es_CL" />
-  <meta property="og:site_name" content="Roble Pizzas" />
-  <meta property="og:title" content="Roble Pizzas | Pizza Napolitana para Eventos en Santiago" />
-  <meta property="og:description" content="Pizzería napolitana móvil para tu evento. Masa de fermentación lenta 36–42h, horno a 480°, pizzas ilimitadas y servicio completo en Santiago, Chile." />
-  <meta property="og:url" content="https://cortecasero.cl/" />
-  <meta property="og:image" content="https://cortecasero.cl/imagenes/roble-pizzas-evento.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Roble Pizzas preparando pizza napolitana artesanal en vivo para un evento en Santiago, Chile" />
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.75;
+  overflow-x: hidden;
+}
 
-  <!-- ══ TWITTER CARD ══ -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@roblepizzas" />
-  <meta name="twitter:title" content="Roble Pizzas | Pizza Napolitana para Eventos en Santiago" />
-  <meta name="twitter:description" content="Pizzería móvil para eventos con pizza napolitana artesanal, ingredientes premium y servicio completo. Santiago, Chile." />
-  <meta name="twitter:image" content="https://cortecasero.cl/imagenes/roble-pizzas-evento.jpg" />
-  <meta name="twitter:image:alt" content="Pizza napolitana artesanal de Roble Pizzas para eventos en Santiago" />
+img {
+  display: block;
+  max-width: 100%;
+}
 
-  <!-- ══ PERFORMANCE ══ -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-  <link rel="stylesheet" href="style.css" />
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.1;
+  color: var(--roble);
+  letter-spacing: -0.02em;
+}
 
-  <!-- ══ SCHEMA: LocalBusiness + FoodEstablishment ══ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": ["FoodEstablishment", "LocalBusiness"],
-    "@id": "https://cortecasero.cl/#organization",
-    "name": "Roble Pizzas",
-    "alternateName": "Roble Pizzas — Pizzería Napolitana para Eventos",
-    "url": "https://cortecasero.cl/",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://cortecasero.cl/favicon.png",
-      "width": 512,
-      "height": 512
-    },
-    "image": {
-      "@type": "ImageObject",
-      "url": "https://cortecasero.cl/imagenes/roble-pizzas-evento.jpg",
-      "width": 1200,
-      "height": 630,
-      "caption": "Roble Pizzas preparando pizza napolitana artesanal en vivo para un evento en Santiago, Chile"
-    },
-    "description": "Pizzería napolitana móvil especializada en pizza artesanal para eventos en Santiago, Chile. Matrimonios, cumpleaños y eventos corporativos con masa de fermentación lenta 36–42h, horno a 480° y pizzas ilimitadas.",
-    "telephone": "+56-9-9199-9301",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Santiago",
-      "addressRegion": "Región Metropolitana",
-      "addressCountry": "CL"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -33.4489,
-      "longitude": -70.6693
-    },
-    "areaServed": [
-      { "@type": "City", "name": "Santiago", "sameAs": "https://www.wikidata.org/wiki/Q2887" },
-      { "@type": "AdministrativeArea", "name": "Región Metropolitana, Chile" }
-    ],
-    "founder": { "@type": "Person", "name": "Juan Vial", "jobTitle": "Pizzaiolo & Fundador" },
-    "foundingDate": "2024",
-    "brand": { "@type": "Brand", "name": "Roble Pizzas" },
-    "servesCuisine": ["Pizza Napolitana", "Pizza Artesanal", "Cocina Italiana"],
-    "priceRange": "$$",
-    "paymentAccepted": "Transferencia bancaria, efectivo",
-    "currenciesAccepted": "CLP",
-    "sameAs": [
-      "https://www.instagram.com/roblepizzas",
-      "https://www.cortecasero.cl"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "name": "Servicio completo de pizza napolitana para eventos",
-      "description": "Pizzas ilimitadas durante 3 horas, 2 hornos napolitanos a 480°, equipo de garzones, stand completo, traslado, montaje y desmontaje.",
-      "priceCurrency": "CLP",
-      "price": "7000",
-      "priceSpecification": {
-        "@type": "UnitPriceSpecification",
-        "price": "7000",
-        "priceCurrency": "CLP",
-        "unitText": "por persona"
-      },
-      "availability": "https://schema.org/InStock",
-      "url": "https://cortecasero.cl/cotizar.html"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5",
-      "reviewCount": "3",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Marcela R." },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-        "reviewBody": "Contratamos Roble Pizzas para la celebración de cumpleaños de mi hija y fue un éxito total. Los invitados no podían creer lo buenas que estaban las pizzas, y ver cómo las preparaban en vivo fue un espectáculo aparte."
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Felipe C." },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-        "reviewBody": "Llevamos a Juan a nuestra fiesta corporativa y superó todas las expectativas. Profesional, puntual, y las pizzas eran increíbles."
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Valentina M." },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-        "reviewBody": "Nunca había probado una pizza así en un evento. La masa es una locura, finita y con ese sabor que no encuentras en ningún otro lado. El servicio fue impecable de principio a fin."
-      }
-    ]
+h1 {
+  font-size: clamp(2.6rem, 6vw, 5.4rem);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 700;
+}
+
+p {
+  color: var(--texto-suave);
+  font-size: 1rem;
+  max-width: 66ch;
+}
+
+.container {
+  width: min(92%, 1180px);
+  margin: 0 auto;
+}
+
+.section {
+  padding: 110px 0;
+}
+
+.section--alt {
+  background: var(--fondo-alt);
+}
+
+.section--dark {
+  background: linear-gradient(180deg, #120D09 0%, #1B120C 100%);
+  color: var(--blanco);
+}
+
+.section--dark h2,
+.section--dark h3,
+.section--dark h4 {
+  color: var(--blanco);
+}
+
+.section--dark p {
+  color: rgba(252,250,247,0.74);
+}
+
+.text-center {
+  text-align: center;
+}
+.section--alt { background: var(--fondo-alt); }
+
+.flex { display: flex; }
+.grid { display: grid; }
+.gap-sm { gap: 1rem; }
+.gap-md { gap: 2rem; }
+.gap-lg { gap: 3rem; }
+
+.text-center { text-align: center; }
+
+/* ── Eyebrow label ── */
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--acento);
+}
+
+.section--dark .eyebrow {
+  color: var(--madera-suave);
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 1.4rem 0 1.8rem;
+}
+
+.ornament::before,
+.ornament::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--borde);
+}
+
+.ornament span {
+  color: var(--madera);
+  font-size: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.95rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: var(--transicion);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--acento);
+  color: var(--blanco);
+  box-shadow: 0 10px 24px rgba(184,107,47,0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: #9F5C27;
+  box-shadow: 0 16px 34px rgba(184,107,47,0.28);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--blanco);
+  border-color: rgba(252,250,247,0.28);
+}
+
+.btn-outline:hover {
+  background: rgba(252,250,247,0.07);
+  border-color: rgba(252,250,247,0.55);
+}
+
+.btn-outline-dark {
+  background: transparent;
+  color: var(--roble);
+  border-color: rgba(22,16,11,0.18);
+}
+
+.btn-outline-dark:hover {
+  background: var(--roble);
+  color: var(--blanco);
+}
+
+/* ── Navigation ── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.2rem 0;
+  transition: var(--transicion);
+}
+
+.nav.scrolled {
+  background: #0D0804;
+  padding: 0.8rem 0;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--blanco);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.nav__logo span {
+  display: block;
+  font-size: 0.55rem;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--madera);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav__links a {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(253,250,246,0.8);
+  transition: var(--transicion);
+  padding: 0.2rem 0;
+  border-bottom: 1px solid transparent;
+}
+
+.nav__links a:hover,
+.nav__links a.active {
+  color: var(--blanco);
+  border-bottom-color: var(--madera);
+}
+
+.nav__cta {
+  padding: 0.6rem 1.4rem !important;
+  font-size: 0.72rem !important;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--blanco);
+  transition: var(--transicion);
+}
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10,7,5,0.68) 0%, rgba(10,7,5,0.76) 100%);
+}
+
+.hero__bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.28;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  padding-top: 3rem;
+}
+
+.hero__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.9rem;
+  margin-bottom: 1.5rem;
+  border-radius: 999px;
+  background: rgba(184,107,47,0.12);
+  border: 1px solid rgba(184,107,47,0.22);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #D8B394;
+}
+
+.hero h1 {
+  color: var(--blanco);
+  margin-bottom: 1.2rem;
+}
+
+.hero h1 em {
+  color: var(--madera-suave);
+  font-style: italic;
+}
+
+.hero__sub {
+  font-size: 1.08rem;
+  color: rgba(252,250,247,0.78);
+  margin-bottom: 2rem;
+  max-width: 58ch;
+}
+
+.hero__btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(252,250,247,0.45);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ── Highlight strip ── */
+.strip {
+  background: var(--acento);
+  padding: 1.2rem 0;
+  overflow: hidden;
+}
+
+.strip__track {
+  display: flex;
+  gap: 3rem;
+  animation: marquee 24s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.strip__item {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blanco);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.strip__item::after {
+  content: '◆';
+  font-size: 0.5rem;
+  opacity: 0.6;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--blanco);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  transition: var(--transicion);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 60px rgba(62,42,31,0.2);
+}
+
+.card__body {
+  padding: 1.8rem;
+}
+
+/* ── Feature icons ── */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: var(--blanco);
+  transition: var(--transicion);
+}
+
+.feature:hover {
+  border-color: var(--madera);
+  transform: translateY(-4px);
+  box-shadow: var(--sombra);
+}
+
+.feature__icon {
+  font-size: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fondo-alt);
+  border-radius: 50%;
+}
+
+.feature h3 { font-size: 1.1rem; }
+.feature p  { font-size: 0.9rem; }
+
+/* ── Pizza menu cards ── */
+.pizza-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.pizza-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(164,113,72,0.2);
+  border-radius: 6px;
+  padding: 1.6rem;
+  transition: var(--transicion);
+}
+
+.pizza-card:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--madera);
+  transform: translateY(-4px);
+}
+
+.pizza-card h4 {
+  color: var(--madera);
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.pizza-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.pizza-card ul li {
+  font-size: 0.82rem;
+  color: rgba(253,250,246,0.65);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.pizza-card ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--acento);
+  font-size: 0.65rem;
+}
+
+/* ── Steps / How it works ── */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  counter-reset: step;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  counter-increment: step;
+  position: relative;
+}
+
+.step__num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--acento);
+  opacity: 0.25;
+  line-height: 1;
+}
+
+.step h3 { font-size: 1rem; margin-top: -0.5rem; }
+.step p  { font-size: 0.88rem; }
+
+/* ── Testimonials ── */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial {
+  background: var(--blanco);
+  border-radius: 6px;
+  padding: 2rem;
+  border-left: 3px solid var(--acento);
+  box-shadow: var(--sombra);
+}
+
+.testimonial__stars {
+  color: #f0a500;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.testimonial__text {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--texto);
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.testimonial__author {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--madera);
+}
+
+/* ── Price badge ── */
+.price-box {
+  background: #0D0804;
+  color: var(--blanco);
+  border-radius: 8px;
+  padding: 3rem;
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+  border: 1px solid rgba(200,96,26,0.25);
+}
+
+.price-box__price {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--madera);
+  line-height: 1;
+  margin: 0.5rem 0;
+}
+
+.price-box__unit {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.5);
+  margin-bottom: 1.5rem;
+}
+
+.price-box ul {
+  list-style: none;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.price-box ul li {
+  font-size: 0.88rem;
+  color: rgba(253,250,246,0.75);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.price-box ul li::before {
+  content: '✓';
+  color: var(--acento);
+  font-weight: 700;
+}
+
+/* ── CTA band ── */
+.cta-band {
+  background: linear-gradient(135deg, #0D0804 0%, #1A1008 100%);
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(200,96,26,0.12) 0%, transparent 70%);
+}
+
+.cta-band .container { position: relative; }
+
+.cta-band h2 { color: var(--blanco); }
+
+.cta-band p {
+  color: rgba(253,250,246,0.7);
+  margin: 1rem auto 2rem;
+}
+
+/* ── Gallery grid ── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 4px;
+  aspect-ratio: 1;
+  background: var(--fondo-alt);
+  cursor: pointer;
+  position: relative;
+}
+
+.gallery-item:nth-child(3n+2) { aspect-ratio: 1 / 1.3; }
+.gallery-item:nth-child(5)    { grid-column: span 2; aspect-ratio: 2 / 1; }
+
+.gallery-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--fondo-alt), var(--fondo));
+  color: var(--texto-suave);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: var(--transicion);
+  border: 1px dashed var(--borde);
+}
+
+.gallery-placeholder span { font-size: 2.5rem; }
+
+.gallery-item:hover .gallery-placeholder {
+  background: linear-gradient(135deg, var(--roble), #5a3a28);
+  color: rgba(253,250,246,0.7);
+}
+
+/* ── About page ── */
+.about-hero {
+  background: #0D0804;
+  padding: 160px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(200,96,26,0.15) 0%, transparent 65%);
+}
+
+.about-hero .container { position: relative; }
+
+.about-hero h1 { color: var(--blanco); }
+.about-hero .eyebrow { color: var(--madera); }
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.value-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: var(--blanco);
+}
+
+.value-card__icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.value-card h4 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+.value-card p  { font-size: 0.82rem; }
+
+/* ── Footer ── */
+.footer {
+  background: #050300;
+  padding: 60px 0 30px;
+  color: rgba(253,250,246,0.6);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer__brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--blanco);
+  margin-bottom: 0.4rem;
+}
+
+.footer__brand-sub {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--madera);
+  margin-bottom: 1rem;
+}
+
+.footer__desc {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  max-width: 36ch;
+}
+
+.footer h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  color: var(--madera);
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.footer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer ul li a {
+  font-size: 0.85rem;
+  color: rgba(253,250,246,0.55);
+  transition: var(--transicion);
+}
+
+.footer ul li a:hover { color: var(--madera); }
+
+.footer__contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: rgba(253,250,246,0.55);
+  margin-bottom: 0.6rem;
+}
+
+.footer__bottom {
+  border-top: 1px solid rgba(164,113,72,0.15);
+  padding-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+}
+
+/* ── Page header (inner pages) ── */
+.page-header {
+  background: #0D0804;
+  padding: 140px 0 70px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(200,96,26,0.12) 0%, transparent 70%);
+}
+
+.page-header .container { position: relative; }
+.page-header h1 { color: var(--blanco); }
+.page-header p  { color: rgba(253,250,246,0.65); margin: 1rem auto 0; }
+
+/* ── Lightbox ── */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-overlay.active { display: flex; }
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  color: var(--blanco);
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+  background: none;
+  border: none;
+}
+
+.lightbox-content {
+  max-width: 80vw;
+  max-height: 80vh;
+  text-align: center;
+  color: rgba(253,250,246,0.5);
+  font-size: 0.9rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .section { padding: 64px 0; }
+
+  .nav__links { display: none; }
+  .nav__links.open {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--roble);
+    padding: 6rem 2rem 2rem;
+    z-index: 99;
   }
-  </script>
-
-  <!-- ══ SCHEMA: FAQPage — genera rich snippets en Google ══ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "¿Cuánto cuesta contratar Roble Pizzas para un evento?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "El servicio parte desde $7.000 por persona para eventos de 3 horas con pizzas ilimitadas. El precio final varía según la cantidad de invitados, ubicación y tipo de evento."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Qué incluye el servicio de Roble Pizzas?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Incluye pizzas ilimitadas durante 3 horas, 2 hornos napolitanos a 480°, equipo de garzones, stand completo con 4 mesas, traslado, montaje y desmontaje. Solo necesitas estacionamiento y espacio para el stand."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿En qué tipos de eventos trabaja Roble Pizzas?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Matrimonios, cumpleaños, eventos corporativos, graduaciones y cualquier celebración en Santiago y la Región Metropolitana de Chile."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Con cuánta anticipación debo reservar?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Recomendamos cotizar con al menos 2 a 4 semanas de anticipación para asegurar disponibilidad en tu fecha."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Qué es la fermentación lenta de la masa?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "La masa se fermenta entre 36 y 42 horas. Este proceso desarrolla más sabor, genera una textura aérea y hace que la pizza sea más digestiva. Es la técnica tradicional de la pizza napolitana italiana."
-        }
-      }
-    ]
+  .nav__links.open li { width: 100%; }
+  .nav__links.open a {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(164,113,72,0.2);
   }
-  </script>
+  .hamburger { display: flex; z-index: 100; }
 
-  <!-- ══ SCHEMA: BreadcrumbList ══ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cortecasero.cl/" }
-    ]
+  .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  </script>
+  .gallery-item:nth-child(5) { grid-column: span 1; aspect-ratio: 1; }
 
-  <!-- ══ SCHEMA: Service ══ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Pizza Napolitana para Eventos en Santiago",
-    "provider": { "@type": "LocalBusiness", "name": "Roble Pizzas", "url": "https://cortecasero.cl/" },
-    "serviceType": "Catering de pizza napolitana artesanal para eventos",
-    "areaServed": { "@type": "City", "name": "Santiago, Chile" },
-    "description": "Servicio completo de pizza napolitana para matrimonios, cumpleaños y eventos corporativos en Santiago. Pizzas ilimitadas, horno a 480°, garzones y montaje incluido.",
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "CLP",
-      "price": "7000",
-      "description": "Desde $7.000 por persona · servicio de 3 horas"
-    }
+  .hero__btns { flex-direction: column; align-items: flex-start; }
+  .price-box { padding: 2rem 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Hero background image ── */
+.hero__bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.28;
+}
+
+/* ── Generic image slot ── */
+.img-slot {
+  position: relative;
+  background: var(--fondo-alt);
+  border: 1px dashed var(--borde);
+}
+.img-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.img-slot:hover img { transform: scale(1.03); }
+.img-slot__label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(26,16,8,0.55);
+  color: rgba(253,250,246,0.5);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.75rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.img-slot:hover .img-slot__label { opacity: 1; }
+.img-slot--empty img { display: none; }
+.img-slot--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 220px;
+}
+.img-slot--empty::before {
+  content: '📷';
+  font-size: 2rem;
+}
+.img-slot--empty::after {
+  content: 'Sube tu foto aquí';
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+/* ── Video wrapper ── */
+.video-wrapper {
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(200,96,26,0.2);
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+}
+.video-wrapper iframe,
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: rgba(253,250,246,0.35);
+}
+.video-play-btn {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  border: 2px solid rgba(200,96,26,0.4);
+  background: rgba(200,96,26,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--acento);
+}
+.video-placeholder p {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.4);
+  max-width: none;
+}
+.video-placeholder small {
+  font-size: 0.72rem;
+  color: rgba(253,250,246,0.2);
+  text-align: center;
+  max-width: 36ch;
+  line-height: 1.5;
+}
+
+/* ── Pizza card image ── */
+.pizza-card__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px dashed rgba(200,96,26,0.2);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pizza-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.pizza-card:hover .pizza-card__img img { transform: scale(1.06); }
+.pizza-card__img-label {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+.pizza-card__img img + .pizza-card__img-label { display: none; }
+.pizza-card__img--empty img { display: none !important; }
+.pizza-card__img--empty .pizza-card__img-label { opacity: 0.5; }
+
+/* ── Carousel ── */
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 2.5rem;
+}
+
+.carousel__track-wrap {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: var(--sombra);
+  background: #1a120d; /* fondo elegante para rellenar espacios */
+}
+
+.carousel__track {
+  display: flex;
+  transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.carousel__slide {
+  min-width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #1a120d;
+
+  /* altura responsive, sin obligar recortes */
+  height: clamp(280px, 55vw, 680px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* muestra la imagen completa */
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* Hover más sutil para no cortar ni deformar */
+.carousel__slide:hover img {
+  transform: scale(1.01);
+}
+
+.carousel__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.2rem 1.5rem;
+  background: linear-gradient(to top, rgba(13,8,4,0.88) 0%, rgba(13,8,4,0.15) 70%, transparent 100%);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.92);
+}
+
+.carousel__btn {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--borde);
+  background: var(--blanco);
+  color: var(--roble);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transicion);
+  box-shadow: 0 4px 16px rgba(26,16,8,0.1);
+}
+
+.carousel__btn:hover {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: var(--blanco);
+  transform: scale(1.08);
+}
+
+.carousel__dots {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--borde);
+  border: none;
+  cursor: pointer;
+  transition: var(--transicion);
+  padding: 0;
+}
+
+.carousel__dot.active {
+  background: var(--acento);
+  transform: scale(1.35);
+}
+
+@media (max-width: 900px) {
+  .carousel__slide {
+    height: clamp(240px, 60vw, 500px);
   }
-  </script>
+}
 
-</head>
+@media (max-width: 600px) {
+  .carousel {
+    gap: 0.5rem;
+  }
 
+  .carousel__btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
 
+  .carousel__slide {
+    height: clamp(220px, 75vw, 380px);
+  }
 
+  .carousel__caption {
+    font-size: 0.7rem;
+    padding: 0.9rem 1rem;
+    letter-spacing: 0.05em;
+  }
+}
 
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
 
-<body>
-
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="container nav__inner">
-      <a href="index.html" class="nav__logo">
-        <img src="favicon.png" alt="Roble Pizzas" style="height:52px;width:auto;display:block;border-radius: 50px;" />
-      </a>
-      <ul class="nav__links">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="nosotros.html">Nosotros</a></li>
-        <li><a href="archivo.html">Galería</a></li>
-        <li><a href="cotizar.html" class="btn btn-primary nav__cta">Cotizar evento</a></li>
-      </ul>
-      <button class="hamburger" aria-label="Menú">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero__bg">
-      <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=1600&q=80" alt="" class="hero__bg-img" />
-    </div>
-    <div class="container">
-      <div class="hero__content">
-        <div class="hero__tag">🔥 Pizzería móvil • Santiago, Chile</div>
-        <h1>Pizza napolitana <em>en vivo</em> para tu evento.</h1>
-        <p class="hero__sub">Fermentación lenta de 36 a 42 horas, ingredientes premium y el sabor único del roble. Una experiencia gastronómica que tus invitados nunca olvidarán.</p>
-        <div class="hero__btns">
-          <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
-          <a href="#como-funciona" class="btn btn-outline">¿Cómo funciona?</a>
-        </div>
-      </div>
-    </div>
-    <div class="hero__scroll">Descubre</div>
-  </section>
-
-  <!-- STRIP -->
-  <div class="strip">
-    <div class="strip__track">
-      <div class="strip__item">Fermentación 36–42 horas</div>
-      <div class="strip__item">Masa artesanal italiana</div>
-      <div class="strip__item">Horno napolitano a 480°</div>
-      <div class="strip__item">Ingredientes premium</div>
-      <div class="strip__item">Pizzas ilimitadas</div>
-      <div class="strip__item">Servicio completo en tu evento</div>
-      <div class="strip__item">Fermentación 36–42 horas</div>
-      <div class="strip__item">Masa artesanal italiana</div>
-      <div class="strip__item">Horno napolitano a 480°</div>
-      <div class="strip__item">Ingredientes premium</div>
-      <div class="strip__item">Pizzas ilimitadas</div>
-      <div class="strip__item">Servicio completo en tu evento</div>
-    </div>
-  </div>
-
-  <!-- INTRO -->
-  <section class="section">
-    <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
-        <div class="fade-up">
-          <span class="eyebrow">El servicio</span>
-          <h2>Una pizzería napolitana que llega hasta tu evento</h2>
-          <div class="ornament"><span>🌿</span></div>
-          <p style="margin-bottom:1rem;">En Roble Pizzas no solo llevamos pizzas: llevamos una experiencia gastronómica completa. Tu evento se convierte en algo memorable cuando tus invitados ven cómo cada pizza se prepara en vivo, se estira con el método italiano tradicional y sale directa del horno napolitano.</p>
-          <p>Nos encargamos de todo: el montaje del stand, los hornos, el equipo, el servicio y la limpieza. Tú solo disfrutas.</p>
-          <div style="margin-top:2rem;">
-            <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
-          </div>
-        </div>
-        <div class="fade-up" style="display:flex;flex-direction:column;gap:1rem;">
-          <div class="img-slot" style="border-radius:8px;overflow:hidden;aspect-ratio:4/3;position:relative;align-items: center;">
-            <img
-              src="./Fotos/IMG_9849.JPG"
-              alt="Roble Pizzas en un evento"
-              style="width:60%;height:100%;object-fit:cover;display:flex;"
-            />
-            <div class="img-slot__label">📷 Reemplaza con foto-servicio.jpg</div>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-            <div style="background:var(--fondo-alt);border-radius:8px;padding:1.5rem;text-align:center;border:1px solid var(--borde);">
-              <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--roble);">36–42h</div>
-              <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--texto-suave);">Fermentación</div>
-            </div>
-            <div style="background:var(--fondo-alt);border-radius:8px;padding:1.5rem;text-align:center;border:1px solid var(--borde);">
-              <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--roble);">480°</div>
-              <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--texto-suave);">Temperatura horno</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CÓMO FUNCIONA -->
-  <section class="section" id="como-funciona">
-    <div class="container">
-      <div class="text-center fade-up" style="margin-bottom:3rem;">
-        <span class="eyebrow">El proceso</span>
-        <h2>Cómo funciona el servicio</h2>
-      </div>
-      <div class="steps">
-        <div class="step fade-up">
-          <div class="step__num">01</div>
-          <h3>Llegamos a tu evento</h3>
-          <p>Llegamos 60 minutos antes del inicio del servicio para montar el stand, los hornos y preparar todo.</p>
-        </div>
-        <div class="step fade-up">
-          <div class="step__num">02</div>
-          <h3>Arrancamos con todo</h3>
-          <p>Preparamos las primeras pizzas para que todos tus invitados reciban su primer pedazo rápidamente, sin esperas largas.</p>
-        </div>
-        <div class="step fade-up">
-          <div class="step__num">03</div>
-          <h3>Servicio sin parar</h3>
-          <p>Durante las 3 horas del servicio, el equipo no para: pizzas saliendo del horno, garzones repartiendo, orden y limpieza total.</p>
-        </div>
-        <div class="step fade-up">
-          <div class="step__num">04</div>
-          <h3>Cerramos y nos vamos</h3>
-          <p>Al terminar, desmontamos todo y dejamos el espacio impecable. Si sobran pizzas, hacemos un break y continuamos.</p>
-        </div>
-      </div>
-
-      <div style="margin-top:4rem;background:var(--fondo-alt);border-radius:8px;padding:2.5rem;border:1px solid var(--borde);" class="fade-up">
-        <h3 style="margin-bottom:1rem;">¿Qué necesitas tener listo?</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;">
-          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
-            <span style="font-size:1.4rem;flex-shrink:0;">🅿️</span>
-            <div><strong style="display:block;font-size:0.9rem;">Estacionamiento seguro</strong><span style="font-size:0.82rem;color:var(--texto-suave);">Para el vehículo con los equipos</span></div>
-          </div>
-          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
-            <span style="font-size:1.4rem;flex-shrink:0;">📐</span>
-            <div><strong style="display:block;font-size:0.9rem;">Espacio para el stand</strong><span style="font-size:0.82rem;color:var(--texto-suave);">Para instalar las 4 mesas y los hornos</span></div>
-          </div>
-          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
-            <span style="font-size:1.4rem;flex-shrink:0;">😊</span>
-            <div><strong style="display:block;font-size:0.9rem;">¡Eso es todo!</strong><span style="font-size:0.82rem;color:var(--texto-suave);">Nosotros nos encargamos del resto</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-<!-- VIDEO -->
-<section class="section section--dark" style="padding:80px 0;">
-  <div class="container">
-    <div class="text-center fade-up" style="margin-bottom:2.5rem;">
-      <span class="eyebrow">Míranos en acción</span>
-      <h2>La experiencia Roble Pizzas</h2>
-      <p style="margin:0.75rem auto 0;text-align:center;">
-        Así se vive tener una pizzería napolitana en tu evento.
-      </p>
-    </div>
-
-    <div class="video-wrapper fade-up">
-  <iframe
-    src="https://www.youtube.com/embed/JGFgv7j3bfo"
-    title="Roble Pizzas en acción"
-    referrerpolicy="strict-origin-when-cross-origin"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen>
-  </iframe>
-</div>
-  </div>
-</section>
-<!-- INTRO SERVICIO -->
-    <section class="section">
-      <div class="container">
-        <div class="service-intro">
-          <div class="service-intro__content fade-up">
-            <span class="eyebrow">El servicio</span>
-            <h3>Más que pizzas: una experiencia en vivo, cuidada de principio a fin</h3>
-            <div class="ornament"><span>•</span></div>
-
-            <p>
-              En Roble Pizzas no llegamos solo a cocinar. Llegamos a montar una experiencia completa
-              alrededor de la pizza napolitana: instalamos el stand, preparamos los hornos, cocinamos
-              en vivo, servimos durante todo el evento y al final desmontamos todo de forma ordenada.
-            </p>
-
-            <p>
-              La gracia está en que tus invitados no solo comen bien. También ven cómo se estira la masa,
-              cómo trabaja el horno, cómo salen las pizzas recién hechas y cómo cada parte del servicio
-              está pensada para generar un momento memorable.
-            </p>
-
-            <p>
-              Es una propuesta ideal para quienes quieren algo distinto, cálido y bien ejecutado.
-              Ya sea un matrimonio, un cumpleaños o un evento corporativo, la comida deja de ser solo
-              acompañamiento y se convierte en parte importante de la experiencia.
-            </p>
-
-            <div class="service-points">
-              <div class="service-point">
-                <strong>Montaje completo</strong>
-                <span>Llegamos con anticipación, instalamos todo y dejamos el stand listo para comenzar.</span>
-              </div>
-              <div class="service-point">
-                <strong>Preparación en vivo</strong>
-                <span>Las pizzas se hacen frente a los invitados, recién salidas del horno napolitano.</span>
-              </div>
-              <div class="service-point">
-                <strong>Servicio continuo</strong>
-                <span>El equipo reparte, mantiene el orden y sostiene el ritmo durante todo el evento.</span>
-              </div>
-            </div>
-
-            <div class="service-intro__actions">
-              <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
-            </div>
-          </div>
-
-</section>
-  <!-- CARRUSEL DE FOTOS -->
-  <section class="section section--alt" style="padding:80px 0;">
-    <div class="container">
-      <div class="text-center fade-up" style="margin-bottom:2.5rem;">
-        <span class="eyebrow">Nuestras pizzas</span>
-        <h2>Directo del horno napolitano</h2>
-        <p style="text-align:center;margin:0.75rem auto 0;">Masa con 36–42 horas de fermentación, cocción a 480° y el sabor único del roble.</p>
-      </div>
-
-      <div class="carousel fade-up">
-        <button class="carousel__btn carousel__btn--prev" aria-label="Anterior">&#8592;</button>
-
-        <div class="carousel__track-wrap">
-          <div class="carousel__track" id="carouselTrack">
-
-            <!-- SLIDE 1 — reemplaza src por tu foto -->
-            <div class="carousel__slide">
-              <img src="./Fotos/IMG_9909.jpg" alt="Pizza Margherita napolitana" />
-              <div class="carousel__caption"></div>
-            </div>
-
-            <!-- SLIDE 2 -->
-            <div class="carousel__slide">
-              <img src="./Fotos/fotosofi.png" alt="Pizza Pepperoni napolitana" />
-              <div class="carousel__caption"></div>
-            </div>
-
-            <!-- SLIDE 3 -->
-            <div class="carousel__slide">
-              <img src="./Fotos/Con todo el AMOR.zip - 1.png" alt="Pizza Jamón Serrano" />
-              <div class="carousel__caption"></div>
-            </div>
-
-            <!-- SLIDE 4 -->
-            <div class="carousel__slide">
-              <img src="./Fotos/Peperonni_1.webp" alt="Pizza Pesto Capresse" />
-              <div class="carousel__caption"></div>
-            </div>
-
-            <!-- SLIDE 5 -->
-            <div class="carousel__slide">
-              <img src="./Fotos/Capresse.jpg" alt="Pizza Champiñón" />
-              <div class="carousel__caption"></div>
-            </div>
-
-            <!-- SLIDE 6 -->
-            <div class="carousel__slide">
-              <img src="./Fotos/garzonpizza.jpg" alt="Pizza Queso Azul" />
-              <div class="carousel__caption"></div>
-            </div>
-
-          </div>
-        </div>
-
-        <button class="carousel__btn carousel__btn--next" aria-label="Siguiente">&#8594;</button>
-        <div class="carousel__dots" id="carouselDots"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DIFERENCIADORES -->
-  <section class="section section--alt">
-    <div class="container">
-      <div class="text-center fade-up" style="margin-bottom:3rem;">
-        <span class="eyebrow">¿Por qué Roble Pizzas?</span>
-        <h2>Lo que nos hace diferentes</h2>
-      </div>
-      <div class="feature-grid">
-        <div class="feature fade-up">
-          <div class="feature__icon">🌾</div>
-          <h3>Masa de fermentación lenta</h3>
-          <p>36 a 42 horas de fermentación. Una masa más digestiva, con más sabor y esa textura aérea que caracteriza a la pizza napolitana.</p>
-        </div>
-        <div class="feature fade-up">
-          <div class="feature__icon">🍅</div>
-          <h3>Ingredientes 100% premium</h3>
-          <p>Salsa de tomate italiana, mozzarella de calidad premium, aceite de oliva y toppings seleccionados personalmente. Sin atajos.</p>
-        </div>
-        <div class="feature fade-up">
-          <div class="feature__icon">🪵</div>
-          <h3>Ahumados en roble</h3>
-          <p>Ingredientes seleccionados ahumados en madera de roble. Un diferenciador único que eleva cada bocado a otra categoría.</p>
-        </div>
-        <div class="feature fade-up">
-         
-      
-        <div class="feature fade-up">
-          <div class="feature__icon">🤝</div>
-          <h3>Trato personalizado</h3>
-          <p>Cada evento es único. Me coordino directamente contigo para asegurarme de que el servicio se adapte perfectamente a tu celebración.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PIZZAS MENU -->
-  <section class="section section--dark">
-    <div class="container">
-      <div class="text-center fade-up" style="margin-bottom:3rem;">
-        <span class="eyebrow">Nuestras pizzas</span>
-        <h2>Variedades del menú</h2>
-        <p style="margin:1rem auto 0;">Todas sobre una base de mozzarella, parmesano, salsa italiana y aceite de oliva o aceite ahumado.</p>
-      </div>
-      <div class="pizza-grid">
-        <div class="pizza-card fade-up">
-          <h4>🍕 La Clásica Pepperoni</h4>
-          <ul>
-            <li>Pepperoni artesanal</li>
-            <li>Mozzarella premium</li>
-            <li>Base de tomate italiano</li>
-          </ul>
-        </div>
-        <div class="pizza-card fade-up">
-          <h4>🌿 Margherita</h4>
-          <ul>
-            <li>Base napolitana clásica</li>
-            <li>Albahaca fresca</li>
-            <li>Aceite de oliva virgen</li>
-          </ul>
-        </div>
-        <div class="pizza-card fade-up">
-          <h4>🌱 Pesto Capresse</h4>
-          <ul>
-            <li>Tomates cherry mix</li>
-            <li>Pesto de albahaca ahumado</li>
-            <li>Mozzarella fior di latte</li>
-          </ul>
-        </div>
-        <div class="pizza-card fade-up">
-          <h4>🥩 Jamón Serrano</h4>
-          <ul>
-            <li>Rúcula fresca</li>
-            <li>Jamón serrano</li>
-            <li>Champiñones</li>
-          </ul>
-        </div>
-        <div class="pizza-card fade-up">
-          <h4>🍄 Champiñón</h4>
-          <ul>
-            <li>Jamón de pierna</li>
-            <li>Pistacho</li>
-            <li>Champiñones</li>
-          </ul>
-        </div>
-        <div class="pizza-card fade-up">
-          <h4>🧀 Queso Azul</h4>
-          <ul>
-            <li>Queso azul</li>
-            <li>Cebolla caramelizada</li>
-            <li>Salsa de vino tinto</li>
-          </ul>
-        </div>
-      </div>
-      <div style="text-align:center;margin-top:2.5rem;">
-        <a href="cotizar.html" class="btn btn-primary">Cotizar con este menú →</a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- PRECIO -->
-  <section class="section section--alt">
-    <div class="container text-center">
-      <div class="fade-up" style="margin-bottom:2rem;">
-        <span class="eyebrow">Precio de referencia</span>
-        <h2>Servicio completo por persona</h2>
-      </div>
-      <div class="price-box fade-up">
-        <div style="font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(253,250,246,0.4);">Desde</div>
-        <div class="price-box__price">$7.000</div>
-        <div class="price-box__unit">por persona · servicio 3 horas</div>
-        <ul>
-          <li>Pizzas ilimitadas durante 3 horas</li>
-          <li>2 hornos napolitanos a 480°</li>
-          <li>Equipo de garzones incluido</li>
-          <li>Stand completo con 4 mesas</li>
-          <li>Traslado y montaje incluido</li>
-          <li>Desmontaje y limpieza final</li>
-        </ul>
-        <a href="cotizar.html" class="btn btn-primary" style="width:100%;justify-content:center;">Cotizar mi evento →</a>
-      </div>
-      <p style="margin:1.5rem auto 0;font-size:0.85rem;text-align:center;">El precio final puede variar según la cantidad de personas, la ubicación y el tipo de evento. <a href="cotizar.html" style="color:var(--acento);font-weight:700;">Cotiza sin compromiso.</a></p>
-    </div>
-  </section>
-
-
-
-  <!-- CTA FINAL -->
-  <section class="cta-band">
-    <div class="container fade-up">
-      <span class="eyebrow" style="color:var(--madera);">¿Listo para cotizar?</span>
-      <h2>Hagamos de tu evento algo memorable</h2>
-      <p>Cuéntame sobre tu celebración y te envío una cotización sin compromiso. Matrimonios, cumpleaños, eventos corporativos, graduaciones — estamos para todos.</p>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-        <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
-        <a href="nosotros.html" class="btn btn-outline">Conocer la historia</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <div class="footer__brand-name">Roble Pizzas</div>
-          <div class="footer__brand-sub">Pizzería Napolitana para Eventos</div>
-          <p class="footer__desc">Pizza artesanal en vivo para tu celebración. Masa de fermentación lenta, ingredientes premium y el sabor único del roble.</p>
-        </div>
-        <div>
-          <h4>Navegar</h4>
-          <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="nosotros.html">Nosotros</a></li>
-            <li><a href="archivo.html">Galería</a></li>
-            <li><a href="cotizar.html">Cotizar evento</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Contacto</h4>
-          <div class="footer__contact-item">📞 <span>+56 9 9199 9301</span></div>
-          <div class="footer__contact-item">🌐 <a href="https://www.jvialeventos.cl" style="color:rgba(253,250,246,0.55);transition:color 0.3s;" onmouseover="this.style.color='#A47148'" onmouseout="this.style.color='rgba(253,250,246,0.55)'">jvialeventos.cl</a></div>
-          <div class="footer__contact-item" style="margin-top:0.5rem;">👨‍🍳 <span>Juan Vial — Dueño & Pizzaiolo</span></div>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <span>© 2024 Roble Pizzas. Todos los derechos reservados.</span>
-        <span>Hecho con 🔥 en Santiago, Chile</span>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
-
-
-
-
-
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero__bg">
-        <img
-          src="./Fotos/IMG_9849.JPG"
-          alt="Roble Pizzas preparando pizza napolitana en un evento"
-          class="hero__bg-img"
-        />
-      </div>
-
-      <div class="container">
-        <div class="hero__content fade-up">
-          <div class="hero__tag">Roble Pizzas · Pizzería móvil para eventos en Santiago</div>
-
-          <h1>Pizza napolitana en vivo para eventos que quieren dejar huella</h1>
-
-          <p class="hero__sub">
-            En Roble Pizzas llevamos una experiencia gastronómica completa a matrimonios,
-            cumpleaños y eventos corporativos: masa de fermentación lenta, ingredientes premium,
-            hornos napolitanos y servicio en vivo de principio a fin.
-          </p>
-
-          <div class="hero__btns">
-            <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
-            <a href="#como-funciona" class="btn btn-outline">Cómo funciona</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero__scroll">Descubre</div>
-    </section>
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
