@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cotizar Evento — Roble Pizzas</title>
+  <meta name="description" content="Cotiza tu evento con Roble Pizzas. Pizzería napolitana móvil para matrimonios, cumpleaños, eventos corporativos y más." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .cotizador-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .step-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .step-label__num {
+      width: 34px; height: 34px;
+      background: var(--acento);
+      color: var(--blanco);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .step-label h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--texto);
+    }
+    .step-label__line {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, var(--borde), transparent);
+    }
+
+    .form-card {
+      background: var(--blanco);
+      border-radius: 10px;
+      padding: 2.2rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--borde);
+      box-shadow: 0 2px 20px rgba(26,16,8,0.07);
+    }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .form-grid .full { grid-column: 1 / -1; }
+
+    .field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .field label {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--texto-suave);
+    }
+    .field input, .field select, .field textarea {
+      border: 1.5px solid var(--borde);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.92rem;
+      color: var(--texto);
+      background: var(--fondo);
+      transition: var(--transicion);
+      outline: none;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--acento);
+      background: var(--blanco);
+      box-shadow: 0 0 0 3px rgba(200,96,26,0.1);
+    }
+    .field textarea { resize: vertical; min-height: 90px; }
+    .field .hint { font-size: 0.72rem; color: #a08060; font-style: italic; }
+
+    .pizzas-bar {
+      background: linear-gradient(135deg, var(--acento) 0%, #a84d14 100%);
+      border-radius: 8px;
+      padding: 1.2rem 1.6rem;
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.5rem;
+      color: var(--blanco);
+    }
+    .pizzas-bar__num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 900; line-height: 1; flex-shrink: 0;
+    }
+    .pizzas-bar__info { flex: 1; }
+    .pizzas-bar__info strong { display: block; font-size: 0.9rem; margin-bottom: 2px; }
+    .pizzas-bar__info small  { font-size: 0.75rem; opacity: 0.8; }
+    .cortesia-badge {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 0.3rem 0.8rem; border-radius: 20px;
+      font-size: 0.72rem; font-weight: 700; white-space: nowrap;
+    }
+
+    .pizza-row {
+      display: grid;
+      grid-template-columns: 48px 1fr 130px;
+      align-items: center; gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px dashed var(--borde);
+    }
+    .pizza-row:last-child { border-bottom: none; }
+    .pizza-emoji {
+      width: 48px; height: 48px;
+      background: var(--fondo-alt); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      border: 2px solid var(--borde); flex-shrink: 0;
+    }
+    .pizza-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700; color: var(--texto); margin-bottom: 2px;
+    }
+    .pizza-desc { font-size: 0.75rem; color: var(--texto-suave); line-height: 1.4; }
+
+    .qty-control {
+      display: flex; align-items: center;
+      border: 1.5px solid var(--borde); border-radius: 8px;
+      overflow: hidden; background: var(--fondo);
+    }
+    .qty-control button {
+      width: 34px; height: 40px; border: none; background: transparent;
+      cursor: pointer; font-size: 1.1rem; color: var(--acento);
+      transition: background 0.15s; font-weight: 700;
+    }
+    .qty-control button:hover { background: var(--fondo-alt); }
+    .qty-control input {
+      width: 48px; height: 40px; border: none;
+      border-left: 1px solid var(--borde); border-right: 1px solid var(--borde);
+      border-radius: 0; text-align: center;
+      font-size: 0.95rem; font-weight: 700;
+      background: var(--blanco); color: var(--texto); padding: 0; outline: none; box-shadow: none;
+    }
+
+    .qty-display {
+      min-width: 48px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--acento);
+      background: var(--fondo-alt);
+      border: 1.5px solid var(--borde);
+      border-radius: 8px;
+      padding: 0 0.75rem;
+    }
+
+    .warning-bar {
+      background: #fff3cd; border: 1px solid #ffc107;
+      border-radius: 6px; padding: 0.7rem 1rem;
+      font-size: 0.82rem; color: #856404;
+      display: none; margin-top: 1rem;
+    }
+    .warning-bar.show { display: block; }
+
+    .sidebar-sticky { position: sticky; top: 100px; }
+
+    .resumen-card {
+      background: #0D0804; border-radius: 12px; padding: 2rem;
+      color: var(--blanco); border: 1px solid rgba(200,96,26,0.2);
+    }
+    .resumen-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700; color: var(--acento); margin-bottom: 0.2rem;
+    }
+    .resumen-subtitle {
+      font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: rgba(253,250,246,0.35); margin-bottom: 1.5rem; padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .res-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 0.5rem; padding: 0.6rem 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.06);
+    }
+    .res-row:last-of-type { border-bottom: none; }
+    .res-row .res-label {
+      font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(253,250,246,0.4); flex-shrink: 0; padding-top: 2px;
+    }
+    .res-row .res-value { font-size: 0.88rem; font-weight: 700; color: var(--blanco); text-align: right; }
+    .res-row .res-value.accent { color: var(--acento); }
+
+    .divider-orange {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--acento), transparent);
+      margin: 1.2rem 0;
+    }
+
+    .total-block {
+      background: rgba(200,96,26,0.1); border: 1px solid rgba(200,96,26,0.25);
+      border-radius: 10px; padding: 1.2rem; text-align: center; margin-top: 1rem;
+    }
+    .total-block .total-label {
+      font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: rgba(253,250,246,0.4); margin-bottom: 0.3rem;
+    }
+    .total-block .total-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem; font-weight: 900; color: var(--acento); line-height: 1;
+    }
+    .total-block .total-sub { font-size: 0.65rem; color: rgba(253,250,246,0.3); margin-top: 0.2rem; }
+
+    .anticipo-block {
+      background: rgba(255,255,255,0.05); border-radius: 8px; padding: 1rem; margin-top: 0.8rem;
+    }
+    .anticipo-block .ant-label {
+      font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(253,250,246,0.4); margin-bottom: 0.5rem;
+    }
+    .anticipo-row { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+    .anticipo-row .ant-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700; color: rgba(253,250,246,0.85);
+    }
+    .anticipo-row .ant-pct {
+      font-size: 0.7rem; background: rgba(200,96,26,0.25);
+      color: var(--acento); padding: 0.2rem 0.5rem; border-radius: 20px; font-weight: 700;
+    }
+    .saldo-row {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 0.6rem; padding-top: 0.6rem;
+      border-top: 1px dashed rgba(255,255,255,0.08);
+    }
+    .saldo-row .saldo-label { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(253,250,246,0.3); }
+    .saldo-row .saldo-val  { font-size: 1rem; font-weight: 700; color: rgba(253,250,246,0.55); }
+
+    .res-disclaimer {
+      font-size: 0.7rem; color: rgba(253,250,246,0.25);
+      font-style: italic; line-height: 1.5; margin-top: 0.8rem;
+    }
+
+    .btn-wsp {
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+      width: 100%; margin-top: 1.4rem; padding: 1rem;
+      background: #25D366; color: white; border: none; border-radius: 8px;
+      font-family: 'Lato', sans-serif; font-size: 0.88rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.25);
+    }
+    .btn-wsp:hover {
+      background: #1ebe5d; transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.4);
+    }
+    .btn-wsp:active { transform: translateY(0); }
+    .wsp-icon { width: 20px; height: 20px; flex-shrink: 0; }
+
+    .empty-ph {
+      text-align: center; padding: 2rem; color: var(--texto-suave); font-size: 0.88rem;
+    }
+    .empty-ph .ep-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+
+    @media (max-width: 960px) {
+      .cotizador-layout { grid-template-columns: 1fr; }
+      .sidebar-sticky { position: static; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid .full { grid-column: 1; }
+    }
+    @media (max-width: 520px) {
+      .pizza-row { grid-template-columns: 40px 1fr 110px; gap: 0.6rem; }
+      .form-card { padding: 1.4rem; }
+      .resumen-card { padding: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="logo.png" alt="Roble Pizzas" style="height:52px;width:auto;display:block;" />
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="archivo.html">Galería</a></li>
+        <li><a href="cotizar.html" class="btn btn-primary nav__cta">Cotizar evento</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <span class="eyebrow" style="color:var(--acento);">Sin compromiso · Respuesta en 24h</span>
+      <h1>Cotiza tu Evento</h1>
+      <p>Completa el formulario, ve el precio en tiempo real y envíame todo directo por WhatsApp.</p>
+    </div>
+  </section>
+
+  <!-- COTIZADOR -->
+  <section class="section">
+    <div class="container">
+      <div class="cotizador-layout">
+
+        <!-- COLUMNA PRINCIPAL -->
+        <div>
+
+          <!-- PASO 1 -->
+          <div class="step-label">
+            <div class="step-label__num">1</div>
+            <h2>Datos del Evento</h2>
+            <div class="step-label__line"></div>
+          </div>
+          <div class="form-card">
+            <div class="form-grid">
+              <div class="field full">
+                <label>Nombre completo *</label>
+                <input type="text" id="nombre" placeholder="Ej: María González" oninput="actualizarResumen()" />
+              </div>
+              <div class="field">
+                <label>Tipo de evento *</label>
+                <select id="tipo" onchange="actualizarResumen()">
+                  <option value="" disabled selected>Selecciona...</option>
+                  <option>Matrimonio</option>
+                  <option>Cumpleaños</option>
+                  <option>Evento corporativo</option>
+                  <option>Graduación</option>
+                  <option>Aniversario</option>
+                  <option>Fiesta familiar</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Cantidad de invitados *</label>
+                <input type="number" id="invitados" placeholder="Ej: 40" min="15" max="500" oninput="actualizarPizzas()" />
+                <span class="hint">Mínimo 15 personas</span>
+              </div>
+              <div class="field">
+                <label>Fecha del evento</label>
+                <input type="date" id="fecha" oninput="actualizarResumen()" />
+              </div>
+              <div class="field">
+                <label>Teléfono de contacto *</label>
+                <input type="tel" id="telefono" placeholder="+56 9 XXXX XXXX" oninput="actualizarResumen()" />
+              </div>
+              <div class="field full">
+                <label>Dirección del evento *</label>
+                <input type="text" id="direccion" placeholder="Calle, número, depto..." oninput="actualizarResumen()" />
+              </div>
+              <div class="field">
+                <label>Comuna / Ciudad *</label>
+                <input type="text" id="comuna" placeholder="Ej: Las Condes" oninput="actualizarResumen()" />
+              </div>
+            </div>
+          </div>
+
+          <!-- PASO 2 -->
+          <div class="step-label">
+            <div class="step-label__num">2</div>
+            <h2>Distribución de Pizzas</h2>
+            <div class="step-label__line"></div>
+          </div>
+
+          <div id="pizzas-bar" class="pizzas-bar" style="display:none;">
+            <div class="pizzas-bar__num" id="num-pizzas-bar">0</div>
+            <div class="pizzas-bar__info">
+              <strong id="pizzas-bar-titulo">Referencia de pizzas</strong>
+              <small>Distribución de referencia · El servicio es ilimitado ♾️</small>
+            </div>
+            <div class="cortesia-badge">♾️ Pizzas ilimitadas</div>
+          </div>
+
+          <div id="pizzas-placeholder" class="form-card">
+            <div class="empty-ph">
+              <div class="ep-icon">🍕</div>
+              Ingresa la cantidad de invitados para ver la distribución de pizzas recomendada.
+            </div>
+          </div>
+
+          <!-- PASO 3 -->
+          <div class="step-label">
+            <div class="step-label__num">3</div>
+            <h2>Elige tu Menú</h2>
+            <div class="step-label__line"></div>
+          </div>
+          <div class="form-card" id="menu-card">
+            <div id="menu-container">
+              <div class="empty-ph">
+                <div class="ep-icon">🌿</div>
+                Ingresa la cantidad de invitados para ver la distribución de referencia.
+              </div>
+            </div>
+            <div id="ilimitado-note" style="display:none;margin-top:1.2rem;padding:1rem 1.2rem;background:linear-gradient(135deg,rgba(200,96,26,0.08),rgba(200,96,26,0.04));border:1px solid rgba(200,96,26,0.2);border-radius:8px;">
+              <p style="font-size:0.82rem;color:var(--texto-suave);margin:0;max-width:none;">
+                🔥 <strong style="color:var(--texto);">Las pizzas son ilimitadas.</strong> Esta distribución es una referencia calculada para que todos coman bien. Si tus invitados quieren más, siempre tenemos pizzas saliendo del horno.
+              </p>
+            </div>
+          </div>
+
+          <!-- PASO 4 -->
+          <div class="step-label">
+            <div class="step-label__num">4</div>
+            <h2>Comentarios Adicionales</h2>
+            <div class="step-label__line"></div>
+          </div>
+          <div class="form-card">
+            <div class="field">
+              <label>Solicitudes especiales</label>
+              <textarea id="comentarios"
+                placeholder="¿Alergias o restricciones alimentarias? ¿Horario de llegada preferido? ¿Necesitas más pizzas de algún tipo? Cuéntame todo."
+                oninput="actualizarResumen()"></textarea>
+              <span class="hint">El mínimo calculado no puede reducirse. Puedes pedir pizzas adicionales aquí.</span>
+            </div>
+          </div>
+
+        </div><!-- /columna principal -->
+
+        <!-- SIDEBAR -->
+        <div class="sidebar-sticky">
+          <div class="resumen-card">
+            <h3>Resumen</h3>
+            <div class="resumen-subtitle">Tu cotización en tiempo real</div>
+
+            <div class="res-row">
+              <span class="res-label">Cliente</span>
+              <span class="res-value" id="res-nombre">—</span>
+            </div>
+            <div class="res-row">
+              <span class="res-label">Evento</span>
+              <span class="res-value" id="res-tipo">—</span>
+            </div>
+            <div class="res-row">
+              <span class="res-label">Fecha</span>
+              <span class="res-value" id="res-fecha">—</span>
+            </div>
+            <div class="res-row">
+              <span class="res-label">Lugar</span>
+              <span class="res-value" id="res-comuna">—</span>
+            </div>
+            <div class="res-row">
+              <span class="res-label">Invitados</span>
+              <span class="res-value accent" id="res-invitados">—</span>
+            </div>
+            <div class="res-row">
+              <span class="res-label">Pizzas mínimas</span>
+              <span class="res-value accent" id="res-pizzas">—</span>
+            </div>
+            <div class="res-row">
+              <span class="res-label">Servicio</span>
+              <span class="res-value" id="res-pedazos">—</span>
+            </div>
+            <div class="res-row">
+              <span class="res-label">Precio / persona</span>
+              <span class="res-value" id="res-precio-pp">—</span>
+            </div>
+
+            <div class="divider-orange"></div>
+
+            <div class="total-block">
+              <div class="total-label">Total estimado</div>
+              <div class="total-value" id="res-total">$—</div>
+              <div class="total-sub">Servicio 3 horas · Todo incluido</div>
+            </div>
+
+            <div class="anticipo-block">
+              <div class="ant-label">Desglose de pago</div>
+              <div class="anticipo-row">
+                <div>
+                  <div style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(253,250,246,0.35);margin-bottom:2px;">Anticipo para confirmar</div>
+                  <div class="ant-val" id="res-anticipo">$—</div>
+                </div>
+                <div class="ant-pct">40%</div>
+              </div>
+              <div class="saldo-row">
+                <span class="saldo-label">Saldo restante (60%)</span>
+                <span class="saldo-val" id="res-resto">$—</span>
+              </div>
+            </div>
+
+            <p class="res-disclaimer">
+              * El total puede variar por distancia u otros costos adicionales no considerados en esta cotización inicial.
+            </p>
+
+            <a href="#" class="btn-wsp" onclick="enviarWsp(event)">
+              <svg class="wsp-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Enviar por WhatsApp
+            </a>
+          </div>
+        </div><!-- /sidebar -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">Roble Pizzas</div>
+          <div class="footer__brand-sub">Pizzería Napolitana para Eventos</div>
+          <p class="footer__desc">Pizza artesanal en vivo para tu celebración. Masa de fermentación lenta, ingredientes premium y el sabor único del roble.</p>
+        </div>
+        <div>
+          <h4>Navegar</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="archivo.html">Galería</a></li>
+            <li><a href="cotizar.html">Cotizar evento</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <div class="footer__contact-item">📞 <span>+56 9 9199 9301</span></div>
+          <div class="footer__contact-item">🌐 <a href="https://www.jvialeventos.cl" style="color:rgba(253,250,246,0.55);">jvialeventos.cl</a></div>
+          <div class="footer__contact-item" style="margin-top:0.5rem;">👨‍🍳 <span>Juan Vial — Dueño & Pizzaiolo</span></div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2024 Roble Pizzas. Todos los derechos reservados.</span>
+        <span>Hecho con 🔥 en Santiago, Chile</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+  /* ================================================================
+     ROBLE PIZZAS — Lógica del Cotizador
+  ================================================================ */
+
+  const PIZZAS_MENU = [
+    { emoji: '🍕', nombre: 'La Clásica Pepperoni',  desc: 'Salsa italiana, mozzarella premium, pepperoni artesanal' },
+    { emoji: '🌿', nombre: 'Margherita',             desc: 'Base napolitana, albahaca fresca, aceite de oliva virgen' },
+    { emoji: '🌱', nombre: 'Pesto Capresse',         desc: 'Tomates cherry mix, pesto de albahaca ahumado, fior di latte' },
+    { emoji: '🥩', nombre: 'Jamón Serrano',          desc: 'Jamón serrano, rúcula fresca, champiñones' },
+    { emoji: '🍄', nombre: 'Champiñón',              desc: 'Jamón de pierna, pistacho, champiñones' },
+    { emoji: '🧀', nombre: 'Queso Azul',             desc: 'Queso azul, cebolla caramelizada, salsa de vino tinto' },
+  ];
+
+  // Precio EXACTO por número de invitados
+  const PRECIOS = {
+    15: 14900, 20: 13500, 25: 11300, 30: 12400, 35: 10900,
+    40:  9900, 45:  9000, 50:  8400, 60:  7800, 70:  7500,
+    80:  7000, 90:  7000,100:  7000,110:  7000,120:  7000,
+   130:  7000,140:  7000,150:  7000,160:  7000,170:  7000,
+   180:  7000,190:  7000,200:  7000,
+  };
+
+  function calcularPizzasMinimas(p) { return Math.ceil(p * 6 / 8); }
+
+  function obtenerPrecio(p) {
+    // Busca el valor exacto; si no existe, busca el tramo más cercano hacia arriba
+    if (PRECIOS[p] !== undefined) return PRECIOS[p];
+    const llaves = Object.keys(PRECIOS).map(Number).sort((a,b) => a - b);
+    for (const k of llaves) { if (p <= k) return PRECIOS[k]; }
+    return 7000;
+  }
+
+  function formatCLP(n) { return '$' + Math.round(n).toLocaleString('es-CL'); }
+
+  function calcularTotalPizzas() {
+    let t = 0;
+    document.querySelectorAll('.pizza-qty-input').forEach(i => t += parseInt(i.value) || 0);
+    return t;
+  }
+
+  function renderMenu(minPizzas) {
+    const base  = Math.floor(minPizzas / PIZZAS_MENU.length);
+    const extra = minPizzas % PIZZAS_MENU.length;
+    document.getElementById('menu-container').innerHTML = PIZZAS_MENU.map((p, i) => {
+      const qty = base + (i < extra ? 1 : 0);
+      return `<div class="pizza-row">
+        <div class="pizza-emoji">${p.emoji}</div>
+        <div>
+          <div class="pizza-name">${p.nombre}</div>
+          <div class="pizza-desc">${p.desc}</div>
+        </div>
+        <div class="qty-display">${qty}</div>
+      </div>`;
+    }).join('');
+  }
+
+  function actualizarPizzas() {
+    const inv = parseInt(document.getElementById('invitados').value) || 0;
+    const bar = document.getElementById('pizzas-bar');
+    const ph  = document.getElementById('pizzas-placeholder');
+    if (inv < 15) {
+      bar.style.display = 'none';
+      ph.style.display  = 'block';
+      document.getElementById('menu-container').innerHTML = `<div class="empty-ph"><div class="ep-icon">🌿</div>Ingresa la cantidad de invitados para personalizar el menú.</div>`;
+      actualizarResumen();
+      return;
+    }
+    const min = calcularPizzasMinimas(inv);
+    bar.style.display = 'flex';
+    ph.style.display  = 'none';
+    document.getElementById('num-pizzas-bar').textContent    = min;
+    document.getElementById('pizzas-bar-titulo').textContent = `Referencia para ${inv} personas`;
+    renderMenu(min);
+    document.getElementById('ilimitado-note').style.display = 'block';
+    actualizarResumen();
+  }
+
+  function actualizarResumen() {
+    const nombre = document.getElementById('nombre').value.trim();
+    const tipo   = document.getElementById('tipo').value;
+    const inv    = parseInt(document.getElementById('invitados').value) || 0;
+    const fecha  = document.getElementById('fecha').value;
+    const comuna = document.getElementById('comuna').value.trim();
+
+    document.getElementById('res-nombre').textContent = nombre || '—';
+    document.getElementById('res-tipo').textContent   = tipo   || '—';
+    document.getElementById('res-comuna').textContent = comuna || '—';
+
+    if (fecha) {
+      const d = new Date(fecha + 'T12:00:00');
+      document.getElementById('res-fecha').textContent =
+        d.toLocaleDateString('es-CL', { day:'numeric', month:'long', year:'numeric' });
+    } else {
+      document.getElementById('res-fecha').textContent = '—';
+    }
+
+    if (inv < 15) {
+      ['res-invitados','res-pizzas','res-pedazos','res-precio-pp','res-total','res-anticipo','res-resto']
+        .forEach(id => { document.getElementById(id).textContent = '—'; });
+      return;
+    }
+
+    const minPizzas = calcularPizzasMinimas(inv);
+    const preciopp  = obtenerPrecio(inv);
+    const total     = preciopp * inv;
+
+    document.getElementById('res-invitados').textContent = `${inv} personas`;
+    document.getElementById('res-pizzas').textContent    = `${minPizzas} pizzas de referencia`;
+    document.getElementById('res-pedazos').textContent   = `Servicio ilimitado 🎁`;
+    document.getElementById('res-precio-pp').textContent = `${formatCLP(preciopp)} / persona`;
+    document.getElementById('res-total').textContent     = formatCLP(total);
+    document.getElementById('res-anticipo').textContent  = formatCLP(total * 0.4);
+    document.getElementById('res-resto').textContent     = formatCLP(total * 0.6);
+  }
+
+  function enviarWsp(e) {
+    e.preventDefault();
+
+    const nombre  = document.getElementById('nombre').value.trim();
+    const tipo    = document.getElementById('tipo').value;
+    const inv     = parseInt(document.getElementById('invitados').value) || 0;
+    const fecha   = document.getElementById('fecha').value;
+    const dir     = document.getElementById('direccion').value.trim();
+    const comuna  = document.getElementById('comuna').value.trim();
+    const tel     = document.getElementById('telefono').value.trim();
+    const coment  = document.getElementById('comentarios').value.trim();
+
+    if (!nombre || inv < 15 || !dir || !comuna || !tel) {
+      alert('⚠️ Por favor completa: nombre, teléfono, invitados (mínimo 15), dirección y comuna.');
+      return;
+    }
+
+    const min      = calcularPizzasMinimas(inv);
+    const preciopp = obtenerPrecio(inv);
+    const total    = preciopp * inv;
+    const fechaStr = fecha
+      ? new Date(fecha + 'T12:00:00').toLocaleDateString('es-CL', { day:'numeric', month:'long', year:'numeric' })
+      : 'No indicada';
+
+    // Distribución de referencia del menú
+    const base  = Math.floor(min / PIZZAS_MENU.length);
+    const extra = min % PIZZAS_MENU.length;
+    let menuDet = '';
+    PIZZAS_MENU.forEach((p, i) => {
+      const qty = base + (i < extra ? 1 : 0);
+      menuDet += `\n     ${p.emoji} ${p.nombre}: ${qty} pizzas`;
+    });
+
+    const msg =
+      `🍕 *COTIZACIÓN — ROBLE PIZZAS*\n\n` +
+      `👤 *Cliente:* ${nombre}\n` +
+      `📞 *Teléfono:* ${tel}\n` +
+      `🎉 *Tipo de evento:* ${tipo || 'No indicado'}\n` +
+      `👥 *Invitados:* ${inv} personas\n` +
+      `📅 *Fecha:* ${fechaStr}\n` +
+      `📍 *Dirección:* ${dir}, ${comuna}\n\n` +
+      `🍕 *Pizzas de referencia:* ${min} (servicio ilimitado ♾️)\n` +
+      `🍕 *Distribución de referencia:*${menuDet}\n\n` +
+      `💵 *Precio por persona:* ${formatCLP(preciopp)}\n` +
+      `💰 *Total estimado:* ${formatCLP(total)}\n` +
+      `💳 *Anticipo para confirmar (40%):* ${formatCLP(total * 0.4)}\n` +
+      `🔄 *Saldo restante (60%):* ${formatCLP(total * 0.6)}\n` +
+      (coment ? `\n📝 *Comentarios:* ${coment}` : '') +
+      `\n\n_Cotización referencial. El total puede variar por costos de traslado u otros gastos adicionales._`;
+
+    window.open('https://wa.me/56991999301?text=' + encodeURIComponent(msg), '_blank');
+  }
+  </script>
+</body>
+</html>

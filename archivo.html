@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería — Roble Pizzas</title>
+  <meta name="description" content="Galería de eventos, pizzas y el equipo Roble Pizzas en acción. Mira cómo transformamos cada celebración en una experiencia gastronómica única." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .gallery-masonry {
+      columns: 3;
+      column-gap: 1rem;
+    }
+    .gallery-masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+    .gallery-masonry-item .gallery-placeholder {
+      width: 100%;
+      min-height: 200px;
+    }
+    .gallery-masonry-item:nth-child(3n+1) .gallery-placeholder { min-height: 260px; }
+    .gallery-masonry-item:nth-child(3n+2) .gallery-placeholder { min-height: 200px; }
+    .gallery-masonry-item:nth-child(3n)   .gallery-placeholder { min-height: 320px; }
+
+    .gallery-masonry-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(62,42,31,0.85) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.2rem;
+    }
+
+    .gallery-masonry-item:hover .overlay { opacity: 1; }
+    .gallery-masonry-item:hover .gallery-placeholder {
+      background: linear-gradient(135deg, var(--roble), #5a3a28);
+    }
+
+    .overlay-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--madera);
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1.5px solid var(--borde);
+      background: transparent;
+      color: var(--texto-suave);
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--roble);
+      color: var(--blanco);
+      border-color: var(--roble);
+    }
+
+    @media (max-width: 768px) {
+      .gallery-masonry { columns: 2; }
+    }
+    @media (max-width: 480px) {
+      .gallery-masonry { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="logo.png" alt="Roble Pizzas" style="height:52px;width:auto;display:block;" />
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="archivo.html">Galería</a></li>
+        <li><a href="cotizar.html" class="btn btn-primary nav__cta">Cotizar evento</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <span class="eyebrow" style="color:var(--madera);">Archivo visual</span>
+      <h1>Galería de Eventos</h1>
+      <p>Eventos, pizzas, el equipo en acción. Así se ve Roble Pizzas en tu celebración.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Filtros -->
+      <div class="filter-bar fade-up">
+        <button class="filter-btn active">Todos</button>
+        <button class="filter-btn">Pizzas</button>
+        <button class="filter-btn">Eventos</button>
+        <button class="filter-btn">El stand</button>
+        <button class="filter-btn">Equipo</button>
+      </div>
+
+      <!-- Grid masonry -->
+      <div class="gallery-masonry fade-up">
+
+        <div class="gallery-masonry-item">
+          <div class="gallery-placeholder">
+            <span></span>
+            <span></span>
+            <img src="Fotos/Capresse.jpg">
+          </div>
+          <div class="overlay"><span class="overlay-label">Pizza Margherita</span></div>
+        </div>
+
+        <div class="gallery-masonry-item">
+          <div class="gallery-placeholder">
+            <span>🔥</span>
+            <span></span>
+                <img src="Fotos/IMG_9996.jpg">
+          </div>
+          <div class="overlay"><span class="overlay-label">Horno en acción</span></div>
+        </div>
+
+        <div class="gallery-masonry-item">
+          <div class="gallery-placeholder">
+            <span>🎪</span>
+            <span>Evento corporativo</span>
+            <img src="Fotos/IMG_9849.JPG">
+          </div>
+          <div class="overlay"><span class="overlay-label">Evento corporativo</span></div>
+        </div>
+
+        <div class="gallery-masonry-item">
+          <div class="gallery-placeholder">
+            <span>👨‍🍳</span>
+            <span>Amasado en vivo</span>
+            <img src="Fotos/IMG_0138.jpg">
+          </div>
+          <div class="overlay"><span class="overlay-label">Amasado tradicional</span></div>
+        </div>
+
+        <div class="gallery-masonry-item">
+          <div class="gallery-placeholder">
+            <span>🧀</span>
+            <span></span>
+            <img src="Fotos/Peperonni_1.webp">
+          </div>
+          <div class="overlay"><span class="overlay-label">Pizza Pepperoni</span></div>
+        </div>
+
+        <div class="gallery-masonry-item">
+          <div class="gallery-placeholder">
+            <span>💍</span>
+            <span>Matrimonio</span>
+            <img src="Fotos/IMG_0019.JPG">
+          </div>
+          <div class="overlay"><span class="overlay-label">Matrimonio · 2025</span></div>
+        </div>
+
+        <div class="gallery-masonry-item">
+          <div class="gallery-placeholder">
+            <span>🌿</span>
+            <span></span>
+            <img src="Fotos/IMG_9979.jpg">
+          </div>
+          <div class="overlay"><span class="overlay-label">Pizza</span></div>
+        </div>
+
+        <div class="gallery-masonry-item">
+          <div class="gallery-placeholder">
+            <span>🎂</span>
+            <span>Celebración</span>
+            <img src="Fotos/IMG-20250609-WA0082.jpg">
+          </div>
+          <div class="overlay"><span class="overlay-label">Cumpleaños · 80 personas</span></div>
+        </div>
+
+        <div class="gallery-masonry-item">
+          <div class="gallery-placeholder">
+            <span>🪵</span>
+            <span>Stand completo</span>
+            <img src="Fotos/IMG_9966.jpg">
+          </div>
+          <div class="overlay"><span class="overlay-label">El stand Roble</span></div>
+        </div>
+
+    
+      </div>
+
+      <!-- Nota de próximas fotos -->
+      <div style="text-align:center;margin-top:3rem;padding:2rem;background:var(--fondo-alt);border-radius:8px;border:1px dashed var(--borde);" class="fade-up">
+        <p style="font-size:0.9rem;">Las fotos reales del servicio estarán disponibles próximamente.<br>¿Quieres ver el servicio en tu evento?</p>
+        <div style="margin-top:1.5rem;">
+          <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="container fade-up">
+      <span class="eyebrow" style="color:var(--madera);">¿Te convencimos?</span>
+      <h2>Tu celebración podría<br>estar aquí</h2>
+      <p>Cotiza tu evento y llevaremos Roble Pizzas hasta donde tú estés.</p>
+      <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">Roble Pizzas</div>
+          <div class="footer__brand-sub">Pizzería Napolitana para Eventos</div>
+          <p class="footer__desc">Pizza artesanal en vivo para tu celebración. Masa de fermentación lenta, ingredientes premium y el sabor único del roble.</p>
+        </div>
+        <div>
+          <h4>Navegar</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="archivo.html">Galería</a></li>
+            <li><a href="cotizar.html">Cotizar evento</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <div class="footer__contact-item">📞 <span>+56 9 9199 9301</span></div>
+          <div class="footer__contact-item">🌐 <a href="https://www.jvialeventos.cl" style="color:rgba(253,250,246,0.55);">jvialeventos.cl</a></div>
+          <div class="footer__contact-item" style="margin-top:0.5rem;">👨‍🍳 <span>Juan Vial — Dueño & Pizzaiolo</span></div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2024 Roble Pizzas. Todos los derechos reservados.</span>
+        <span>Hecho con 🔥 en Santiago, Chile</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox-overlay">
+    <button class="lightbox-close">✕</button>
+    <div class="lightbox-content">
+      <p>Aquí irán las fotos reales del servicio en eventos.<br>Próximamente disponibles.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
