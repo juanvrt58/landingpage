@@ -1,665 +1,723 @@
-<!-- =========================
-File: index.html
-Landing page - Roble Pizzas
-Notas:
-- Solo estructura + SEO + enlaces a CSS/JS.
-- Ajusta: dominio, redes, email, teléfono, imágenes.
-========================= -->
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="es-CL">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Roble Pizzas | Catering de pizzas en vivo para eventos en Santiago</title>
-  <meta name="description" content="Roble Pizzas: catering de pizzas en vivo con nivel banquetero, montaje impecable y flexibilidad real. Partner confiable para productoras y banqueteras (50–150 personas) en Santiago." />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://www.cortecasero.cl/" />
-<!-- Favicon -->
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <!-- ══ SEO PRIMARIO ══ -->
+  <title>Roble Pizzas | Pizza Napolitana para Eventos en Santiago, Chile</title>
+  <meta name="description" content="Roble Pizzas: pizzería napolitana móvil para matrimonios, cumpleaños y eventos corporativos en Santiago. Masa de fermentación lenta 36–42h, horno a 480°, pizzas ilimitadas y servicio completo. Cotiza sin compromiso." />
+  <meta name="keywords" content="pizza napolitana eventos Santiago, pizza para matrimonios Santiago, pizzería móvil Chile, catering pizza artesanal, pizza para cumpleaños Santiago, pizza corporativa Santiago, horno napolitano eventos, Roble Pizzas, pizza fermentación lenta, pizza para eventos Chile" />
+  <meta name="author" content="Juan Vial — Roble Pizzas" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="theme-color" content="#3E2A1F" />
+  <meta name="language" content="es" />
+  <meta name="geo.region" content="CL-RM" />
+  <meta name="geo.placename" content="Santiago, Chile" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Roble Pizzas | Pizzas en vivo y sin estrés" />
-  <meta property="og:description" content="Catering de pizzas en vivo para productoras y banqueteras. Operación impecable, flexibilidad total y servicio completo en Santiago." />
+  <!-- ══ CANONICAL ══ -->
+  <link rel="canonical" href="https://cortecasero.cl/" />
+
+  <!-- ══ FAVICONS ══ -->
+  <link rel="icon" href="/favicon.png" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- ══ OPEN GRAPH ══ -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.cortecasero.cl/" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1548365328-9f547fcf5a8c?auto=format&fit=crop&w=1200&q=80" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:site_name" content="Roble Pizzas" />
+  <meta property="og:title" content="Roble Pizzas | Pizza Napolitana para Eventos en Santiago" />
+  <meta property="og:description" content="Pizzería napolitana móvil para tu evento. Masa de fermentación lenta 36–42h, horno a 480°, pizzas ilimitadas y servicio completo en Santiago, Chile." />
+  <meta property="og:url" content="https://cortecasero.cl/" />
+  <meta property="og:image" content="https://cortecasero.cl/imagenes/roble-pizzas-evento.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Roble Pizzas preparando pizza napolitana artesanal en vivo para un evento en Santiago, Chile" />
 
- 
-  <!-- Favicon (emoji temporal) -->
- 
-  <!-- Fonts (Montserrat + alternativa elegante para titulares) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <!-- ══ TWITTER CARD ══ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@roblepizzas" />
+  <meta name="twitter:title" content="Roble Pizzas | Pizza Napolitana para Eventos en Santiago" />
+  <meta name="twitter:description" content="Pizzería móvil para eventos con pizza napolitana artesanal, ingredientes premium y servicio completo. Santiago, Chile." />
+  <meta name="twitter:image" content="https://cortecasero.cl/imagenes/roble-pizzas-evento.jpg" />
+  <meta name="twitter:image:alt" content="Pizza napolitana artesanal de Roble Pizzas para eventos en Santiago" />
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="styles.css" />
+  <!-- ══ PERFORMANCE ══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-  <!-- JSON-LD Schema (edita teléfonos, url, etc.) -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- ══ SCHEMA: LocalBusiness + FoodEstablishment ══ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "CateringBusiness",
+    "@type": ["FoodEstablishment", "LocalBusiness"],
+    "@id": "https://cortecasero.cl/#organization",
     "name": "Roble Pizzas",
-    "description": "Catering de pizzas en vivo para productoras y banqueteras en Santiago. Operación impecable y servicio completo para eventos de 50 a 150 personas.",
-    "servesCuisine": ["Italian", "Pizza"],
-    "areaServed": "Santiago, Chile",
-    "url": "https://www.cortecasero.cl/",
-    "image": "https://images.unsplash.com/photo-1548365328-9f547fcf5a8c?auto=format&fit=crop&w=1200&q=80",
+    "alternateName": "Roble Pizzas — Pizzería Napolitana para Eventos",
+    "url": "https://cortecasero.cl/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cortecasero.cl/favicon.png",
+      "width": 512,
+      "height": 512
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://cortecasero.cl/imagenes/roble-pizzas-evento.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "Roble Pizzas preparando pizza napolitana artesanal en vivo para un evento en Santiago, Chile"
+    },
+    "description": "Pizzería napolitana móvil especializada en pizza artesanal para eventos en Santiago, Chile. Matrimonios, cumpleaños y eventos corporativos con masa de fermentación lenta 36–42h, horno a 480° y pizzas ilimitadas.",
+    "telephone": "+56-9-9199-9301",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Santiago",
+      "addressRegion": "Región Metropolitana",
+      "addressCountry": "CL"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -33.4489,
+      "longitude": -70.6693
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Santiago", "sameAs": "https://www.wikidata.org/wiki/Q2887" },
+      { "@type": "AdministrativeArea", "name": "Región Metropolitana, Chile" }
+    ],
+    "founder": { "@type": "Person", "name": "Juan Vial", "jobTitle": "Pizzaiolo & Fundador" },
+    "foundingDate": "2024",
+    "brand": { "@type": "Brand", "name": "Roble Pizzas" },
+    "servesCuisine": ["Pizza Napolitana", "Pizza Artesanal", "Cocina Italiana"],
     "priceRange": "$$",
+    "paymentAccepted": "Transferencia bancaria, efectivo",
+    "currenciesAccepted": "CLP",
     "sameAs": [
-      "https://www.instagram.com/roblepizzas"
+      "https://www.instagram.com/roblepizzas",
+      "https://www.cortecasero.cl"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "name": "Servicio completo de pizza napolitana para eventos",
+      "description": "Pizzas ilimitadas durante 3 horas, 2 hornos napolitanos a 480°, equipo de garzones, stand completo, traslado, montaje y desmontaje.",
+      "priceCurrency": "CLP",
+      "price": "7000",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "7000",
+        "priceCurrency": "CLP",
+        "unitText": "por persona"
+      },
+      "availability": "https://schema.org/InStock",
+      "url": "https://cortecasero.cl/cotizar.html"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "3",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Marcela R." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+        "reviewBody": "Contratamos Roble Pizzas para la celebración de cumpleaños de mi hija y fue un éxito total. Los invitados no podían creer lo buenas que estaban las pizzas, y ver cómo las preparaban en vivo fue un espectáculo aparte."
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Felipe C." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+        "reviewBody": "Llevamos a Juan a nuestra fiesta corporativa y superó todas las expectativas. Profesional, puntual, y las pizzas eran increíbles."
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Valentina M." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+        "reviewBody": "Nunca había probado una pizza así en un evento. La masa es una locura, finita y con ese sabor que no encuentras en ningún otro lado. El servicio fue impecable de principio a fin."
+      }
     ]
   }
   </script>
+
+  <!-- ══ SCHEMA: FAQPage — genera rich snippets en Google ══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta contratar Roble Pizzas para un evento?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El servicio parte desde $7.000 por persona para eventos de 3 horas con pizzas ilimitadas. El precio final varía según la cantidad de invitados, ubicación y tipo de evento."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué incluye el servicio de Roble Pizzas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Incluye pizzas ilimitadas durante 3 horas, 2 hornos napolitanos a 480°, equipo de garzones, stand completo con 4 mesas, traslado, montaje y desmontaje. Solo necesitas estacionamiento y espacio para el stand."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿En qué tipos de eventos trabaja Roble Pizzas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Matrimonios, cumpleaños, eventos corporativos, graduaciones y cualquier celebración en Santiago y la Región Metropolitana de Chile."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Con cuánta anticipación debo reservar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Recomendamos cotizar con al menos 2 a 4 semanas de anticipación para asegurar disponibilidad en tu fecha."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué es la fermentación lenta de la masa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La masa se fermenta entre 36 y 42 horas. Este proceso desarrolla más sabor, genera una textura aérea y hace que la pizza sea más digestiva. Es la técnica tradicional de la pizza napolitana italiana."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ══ SCHEMA: BreadcrumbList ══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://cortecasero.cl/" }
+    ]
+  }
+  </script>
+
+  <!-- ══ SCHEMA: Service ══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Pizza Napolitana para Eventos en Santiago",
+    "provider": { "@type": "LocalBusiness", "name": "Roble Pizzas", "url": "https://cortecasero.cl/" },
+    "serviceType": "Catering de pizza napolitana artesanal para eventos",
+    "areaServed": { "@type": "City", "name": "Santiago, Chile" },
+    "description": "Servicio completo de pizza napolitana para matrimonios, cumpleaños y eventos corporativos en Santiago. Pizzas ilimitadas, horno a 480°, garzones y montaje incluido.",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CLP",
+      "price": "7000",
+      "description": "Desde $7.000 por persona · servicio de 3 horas"
+    }
+  }
+  </script>
+
 </head>
 
+
+
+
+
 <body>
-  <!-- =========================
-  HEADER STICKY (NAV)
-  - Desktop: links visibles
-  - Mobile: botón "Menú" abre panel
-  ========================= -->
-  <div class="topbar">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="favicon.png" alt="Roble Pizzas" style="height:52px;width:auto;display:block;border-radius: 50px;" />
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="archivo.html">Galería</a></li>
+        <li><a href="cotizar.html" class="btn btn-primary nav__cta">Cotizar evento</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg">
+      <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=1600&q=80" alt="" class="hero__bg-img" />
+    </div>
     <div class="container">
-      <div class="nav" aria-label="Navegación principal">
-        <a class="brand" href="#top" aria-label="Ir al inicio">
-          <div class="brand__name">Roble</div>
-          <div class="brand__tag">PIZZAS</div>
-        </a>
-
-        <nav class="navlinks" aria-label="Secciones">
-          <a href="#como-funciona">Cómo funciona</a>
-          <a href="#por-que-roble">Por qué Roble</a>
-          <a href="#eventos-roble">Eventos</a>
-          <a href="#galeria">Galería</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
-
-        <div class="navcta">
-          <button class="burger" id="burger" aria-expanded="false" aria-controls="mobilePanel">Menú</button>
-          <a class="btn btn--ghost" href="#contacto">Cotizar</a>
-          <a class="btn btn--primary" id="whatsBtnTop" href="#" rel="nofollow">WhatsApp</a>
-        </div>
-      </div>
-
-      <!-- Mobile menu -->
-      <div class="mobilePanel" id="mobilePanel">
-        <div class="container">
-          <a href="#como-funciona" class="mLink">Cómo funciona</a>
-          <a href="#por-que-roble" class="mLink">Por qué Roble</a>
-           <a href="#galeria" class="mLink">Galería</a>
-          <a href="#faq" class="mLink">FAQ</a>
-          <a href="#contacto" class="mLink">Contacto</a>
+      <div class="hero__content">
+        <div class="hero__tag">🔥 Pizzería móvil • Santiago, Chile</div>
+        <h1>Pizza napolitana <em>en vivo</em> para tu evento.</h1>
+        <p class="hero__sub">Fermentación lenta de 36 a 42 horas, ingredientes premium y el sabor único del roble. Una experiencia gastronómica que tus invitados nunca olvidarán.</p>
+        <div class="hero__btns">
+          <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
+          <a href="#como-funciona" class="btn btn-outline">¿Cómo funciona?</a>
         </div>
       </div>
     </div>
+    <div class="hero__scroll">Descubre</div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="strip__track">
+      <div class="strip__item">Fermentación 36–42 horas</div>
+      <div class="strip__item">Masa artesanal italiana</div>
+      <div class="strip__item">Horno napolitano a 480°</div>
+      <div class="strip__item">Ingredientes premium</div>
+      <div class="strip__item">Pizzas ilimitadas</div>
+      <div class="strip__item">Servicio completo en tu evento</div>
+      <div class="strip__item">Fermentación 36–42 horas</div>
+      <div class="strip__item">Masa artesanal italiana</div>
+      <div class="strip__item">Horno napolitano a 480°</div>
+      <div class="strip__item">Ingredientes premium</div>
+      <div class="strip__item">Pizzas ilimitadas</div>
+      <div class="strip__item">Servicio completo en tu evento</div>
+    </div>
   </div>
 
-  <main id="top">
-    <!-- =========================
-    HERO
-    - Promesa fuerte + CTA
-    - Imagen Unsplash (editable)
-    ========================= -->
-    <header class="hero">
-      <div class="container">
-        <div class="heroGrid">
-          <div>
-            <div class="h-eyebrow">
-              <span class="pill">Partner confiable para productoras</span>
-              <span class="badge">Eventos 50–150 personas</span>
+  <!-- INTRO -->
+  <section class="section">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+        <div class="fade-up">
+          <span class="eyebrow">El servicio</span>
+          <h2>Una pizzería napolitana que llega hasta tu evento</h2>
+          <div class="ornament"><span>🌿</span></div>
+          <p style="margin-bottom:1rem;">En Roble Pizzas no solo llevamos pizzas: llevamos una experiencia gastronómica completa. Tu evento se convierte en algo memorable cuando tus invitados ven cómo cada pizza se prepara en vivo, se estira con el método italiano tradicional y sale directa del horno napolitano.</p>
+          <p>Nos encargamos de todo: el montaje del stand, los hornos, el equipo, el servicio y la limpieza. Tú solo disfrutas.</p>
+          <div style="margin-top:2rem;">
+            <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
+          </div>
+        </div>
+        <div class="fade-up" style="display:flex;flex-direction:column;gap:1rem;">
+          <div class="img-slot" style="border-radius:8px;overflow:hidden;aspect-ratio:4/3;position:relative;align-items: center;">
+            <img
+              src="./Fotos/IMG_9849.JPG"
+              alt="Roble Pizzas en un evento"
+              style="width:60%;height:100%;object-fit:cover;display:flex;"
+            />
+            <div class="img-slot__label">📷 Reemplaza con foto-servicio.jpg</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div style="background:var(--fondo-alt);border-radius:8px;padding:1.5rem;text-align:center;border:1px solid var(--borde);">
+              <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--roble);">36–42h</div>
+              <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--texto-suave);">Fermentación</div>
             </div>
+            <div style="background:var(--fondo-alt);border-radius:8px;padding:1.5rem;text-align:center;border:1px solid var(--borde);">
+              <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--roble);">480°</div>
+              <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--texto-suave);">Temperatura horno</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <h1>
-              Catering de <span class="accent">pizzas en vivo</span> con nivel banquetero,
-              para que tu evento salga impecable.
-            </h1>
+  <!-- CÓMO FUNCIONA -->
+  <section class="section" id="como-funciona">
+    <div class="container">
+      <div class="text-center fade-up" style="margin-bottom:3rem;">
+        <span class="eyebrow">El proceso</span>
+        <h2>Cómo funciona el servicio</h2>
+      </div>
+      <div class="steps">
+        <div class="step fade-up">
+          <div class="step__num">01</div>
+          <h3>Llegamos a tu evento</h3>
+          <p>Llegamos 60 minutos antes del inicio del servicio para montar el stand, los hornos y preparar todo.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step__num">02</div>
+          <h3>Arrancamos con todo</h3>
+          <p>Preparamos las primeras pizzas para que todos tus invitados reciban su primer pedazo rápidamente, sin esperas largas.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step__num">03</div>
+          <h3>Servicio sin parar</h3>
+          <p>Durante las 3 horas del servicio, el equipo no para: pizzas saliendo del horno, garzones repartiendo, orden y limpieza total.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step__num">04</div>
+          <h3>Cerramos y nos vamos</h3>
+          <p>Al terminar, desmontamos todo y dejamos el espacio impecable. Si sobran pizzas, hacemos un break y continuamos.</p>
+        </div>
+      </div>
 
-            <p class="lead">
-              Roble Pizzas es el equipo que llega, monta y sirve con operación profesional.
-              Tú coordinas el evento. Nosotros resolvemos la experiencia gastronómica.
+      <div style="margin-top:4rem;background:var(--fondo-alt);border-radius:8px;padding:2.5rem;border:1px solid var(--borde);" class="fade-up">
+        <h3 style="margin-bottom:1rem;">¿Qué necesitas tener listo?</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;">
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+            <span style="font-size:1.4rem;flex-shrink:0;">🅿️</span>
+            <div><strong style="display:block;font-size:0.9rem;">Estacionamiento seguro</strong><span style="font-size:0.82rem;color:var(--texto-suave);">Para el vehículo con los equipos</span></div>
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+            <span style="font-size:1.4rem;flex-shrink:0;">📐</span>
+            <div><strong style="display:block;font-size:0.9rem;">Espacio para el stand</strong><span style="font-size:0.82rem;color:var(--texto-suave);">Para instalar las 4 mesas y los hornos</span></div>
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+            <span style="font-size:1.4rem;flex-shrink:0;">😊</span>
+            <div><strong style="display:block;font-size:0.9rem;">¡Eso es todo!</strong><span style="font-size:0.82rem;color:var(--texto-suave);">Nosotros nos encargamos del resto</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- VIDEO -->
+<section class="section section--dark" style="padding:80px 0;">
+  <div class="container">
+    <div class="text-center fade-up" style="margin-bottom:2.5rem;">
+      <span class="eyebrow">Míranos en acción</span>
+      <h2>La experiencia Roble Pizzas</h2>
+      <p style="margin:0.75rem auto 0;text-align:center;">
+        Así se vive tener una pizzería napolitana en tu evento.
+      </p>
+    </div>
+
+    <div class="video-wrapper fade-up">
+  <iframe
+    src="https://www.youtube.com/embed/JGFgv7j3bfo"
+    title="Roble Pizzas en acción"
+    referrerpolicy="strict-origin-when-cross-origin"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+</div>
+  </div>
+</section>
+<!-- INTRO SERVICIO -->
+    <section class="section">
+      <div class="container">
+        <div class="service-intro">
+          <div class="service-intro__content fade-up">
+            <span class="eyebrow">El servicio</span>
+            <h3>Más que pizzas: una experiencia en vivo, cuidada de principio a fin</h3>
+            <div class="ornament"><span>•</span></div>
+
+            <p>
+              En Roble Pizzas no llegamos solo a cocinar. Llegamos a montar una experiencia completa
+              alrededor de la pizza napolitana: instalamos el stand, preparamos los hornos, cocinamos
+              en vivo, servimos durante todo el evento y al final desmontamos todo de forma ordenada.
             </p>
 
-            <div class="heroCtas">
-              <a class="btn btn--primary" href="#contacto">Pedir cotización</a>
-              <a class="btn btn--ghost" href="#como-funciona">Ver cómo funciona</a>
-            </div>
+            <p>
+              La gracia está en que tus invitados no solo comen bien. También ven cómo se estira la masa,
+              cómo trabaja el horno, cómo salen las pizzas recién hechas y cómo cada parte del servicio
+              está pensada para generar un momento memorable.
+            </p>
 
-            <div class="trustRow" aria-label="Beneficios rápidos">
-              <div class="trustItem">
-                <div class="icon">✓</div>
-                <div>
-                  <b>Montaje completo</b>
-                  <span>Hornos, stand, mantelería, utensilios.</span>
-                </div>
+            <p>
+              Es una propuesta ideal para quienes quieren algo distinto, cálido y bien ejecutado.
+              Ya sea un matrimonio, un cumpleaños o un evento corporativo, la comida deja de ser solo
+              acompañamiento y se convierte en parte importante de la experiencia.
+            </p>
+
+            <div class="service-points">
+              <div class="service-point">
+                <strong>Montaje completo</strong>
+                <span>Llegamos con anticipación, instalamos todo y dejamos el stand listo para comenzar.</span>
               </div>
-              <div class="trustItem">
-                <div class="icon">⏱</div>
-                <div>
-                  <b>Flexibilidad real</b>
-                  <span>Nos adaptamos a cambios de horario.</span>
-                </div>
+              <div class="service-point">
+                <strong>Preparación en vivo</strong>
+                <span>Las pizzas se hacen frente a los invitados, recién salidas del horno napolitano.</span>
               </div>
-              <div class="trustItem">
-                <div class="icon">🤝</div>
-                <div>
-                  <b>Equipo aliado</b>
-                  <span>Operamos como parte de tu producción.</span>
-                </div>
+              <div class="service-point">
+                <strong>Servicio continuo</strong>
+                <span>El equipo reparte, mantiene el orden y sostiene el ritmo durante todo el evento.</span>
               </div>
             </div>
-          </div>
 
-          <aside class="heroCard" aria-label="Resumen visual">
-            <div class="heroImg" role="img" aria-label="Pizza artesanal en vivo (imagen Unsplash)"></div>
-            <div class="heroCardBody">
-              <div class="miniTitle">Pizzas en vivo y sin estrés</div>
-              <p>
-                Servicio pensado para productoras emergentes: limpieza, puntualidad, y una experiencia que hace
-                quedar bien a tu equipo frente al cliente final.
-              </p>
+            <div class="service-intro__actions">
+              <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
             </div>
-          </aside>
-        </div>
-      </div>
-    </header>
-
-    <!-- =========================
-    SECCIÓN: CÓMO FUNCIONA
-    ========================= -->
-    <section id="como-funciona">
-      <div class="container">
-        <div class="sectionTitle">
-          <div>
-            <h2>Cómo funciona</h2>
-            <p>Un flujo simple, diseñado para producción: confirmamos, montamos, servimos y cerramos impecable.</p>
-          </div>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <h3>1) Coordinación</h3>
-            <p>Definimos asistentes, horario, lugar, restricciones y formato. Te enviamos propuesta clara y cerrada.</p>
-          </article>
-          <article class="card">
-            <h3>2) Montaje profesional</h3>
-            <p>Llegamos con stand completo, hornos, mesas, manteles y mise en place. Todo limpio, ordenado y pro.</p>
-          </article>
-          <article class="card">
-            <h3>3) Servicio en vivo</h3>
-            <p>Masa preparada en vivo + flujo continuo de pizzas. Opcional: garzones, barra y personal extra.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================
-    SECCIÓN: POR QUÉ ROBLE
-    ========================= -->
-    <section id="por-que-roble">
-      <div class="container">
-        <div class="sectionTitle">
-          <div>
-            <h2>Por qué Roble</h2>
-            <p>Porque en un evento, el proveedor correcto no es un extra: es parte del éxito.</p>
-          </div>
-          <div class="pill">Cercano • Profesional • Resolutivo</div>
-        </div>
-
-        <div class="split">
-          <div class="card">
-            <h3>Nuestra promesa</h3>
-            <ul class="list">
-              <li><b>Operación impecable:</b> montaje limpio, flujo ordenado y cierre correcto.</li>
-              <li><b>Flexibilidad:</b> eventos cambian; nosotros respondemos.</li>
-              <li><b>Partner de producción:</b> trabajamos para que tú quedes excelente ante tu cliente.</li>
-              <li><b>Servicio completo:</b> hornos, stand, insumos, utensilios, gas y transporte.</li>
-            </ul>
           </div>
 
-          <div class="card">
-            <h3>Lo que evitamos (y tú también)</h3>
-            <ul class="list">
-              <li>Proveedor informal que llega tarde o “a medias”.</li>
-              <li>Montaje improvisado que se ve barato.</li>
-              <li>Falta de respuesta ante cambios de horario.</li>
-              <li>Experiencia que arruina la imagen de una productora emergente.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="spacer-14"></div>
-
-        <div class="ctaBand">
-          <div>
-            <h3>¿Necesitas un proveedor que no falle?</h3>
-            <p>Cuéntanos tu evento y te respondemos con una propuesta clara, rápida y profesional.</p>
-          </div>
-          <div class="ctaBand__actions">
-            <a class="btn btn--primary" href="#contacto">Cotizar ahora</a>
-            <a class="btn btn--ghost" id="whatsBtnMid" href="#" rel="nofollow">WhatsApp</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================
-    SECCIÓN: PACKS
-    - "Referenciales": se ajustan en cotización real
-    ========================= -->
-    <!-- =========================
-SECCIÓN: CÓMO SON LOS EVENTOS ROBLE
-Reemplaza completamente la antigua sección de "packs"
-Objetivo:
-- Mostrar el flujo real de un evento
-- Enfatizar operación, confianza y experiencia en vivo
-========================= -->
-
-<section id="eventos-roble">
-  <div class="container">
-    <div class="sectionTitle">
-      <div>
-        <h2>Así funcionan los eventos con Roble</h2>
-        <p>
-          No somos un “pack”. Somos un equipo operativo que llega, monta y resuelve.
-          Así se vive la experiencia Roble Pizzas en un evento real.
-        </p>
-      </div>
-    </div>
-
-    <div class="packages">
-
-      <!-- Paso 1 -->
-      <article class="pack">
-        <h3>1) Cotización y presupuesto</h3>
-        <p class="sub">
-          Antes del evento, definimos todo contigo para que no existan sorpresas.
-        </p>
-
-        <ul class="list">
-          <li>Confirmamos asistentes (50–150)</li>
-          <li>Horario exacto y tiempos de servicio</li>
-          <li>Restricciones alimentarias y menú</li>
-          <li>Extras: garzones, barra o personal adicional</li>
-        </ul>
-      </article>
-
-      <!-- Paso 2 -->
-      <article class="pack pack--featured">
-        <h3>2) Montaje impecable</h3>
-        <p class="sub">
-          Llegamos con stand completo y estética premium, listos para operar.
-        </p>
-
-        <ul class="list">
-          <li>Hornos, mesas, mantelería y utensilios</li>
-          <li>Montaje limpio y ordenado (nivel banquetero)</li>
-          <li>Equipo preparado antes de que lleguen los invitados</li>
-          <li>Operación silenciosa y profesional</li>
-        </ul>
-      </article>
-
-      <!-- Paso 3 -->
-      <article class="pack">
-        <h3>3) Servicio en vivo</h3>
-        <p class="sub">
-          La experiencia principal: pizzas artesanales saliendo en tiempo real.
-        </p>
-
-        <ul class="list">
-          <li>Masa preparada en vivo</li>
-          <li>Flujo continuo durante todo el servicio</li>
-          <li>Atención rápida y cálida</li>
-          <li>Una experiencia que eleva el evento</li>
-        </ul>
-      </article>
-
-      <!-- Paso 4 -->
-      <article class="pack">
-        <h3>4) Flexibilidad total</h3>
-        <p class="sub">
-          En eventos siempre hay cambios. Roble responde como partner, no como proveedor externo.
-        </p>
-
-        <ul class="list">
-          <li>Adaptación ante cambios de horario</li>
-          <li>Soluciones rápidas ante imprevistos</li>
-          <li>Refuerzo de personal si se necesita</li>
-          <li>Compromiso real con la productora</li>
-        </ul>
-      </article>
-
-      <!-- Paso 5 -->
-      <article class="pack">
-        <h3>5) Cierre limpio y profesional</h3>
-        <p class="sub">
-          Terminamos el servicio como corresponde: orden, limpieza y cero carga para tu equipo.
-        </p>
-
-        <ul class="list">
-          <li>Retiro completo del stand</li>
-          <li>Espacio limpio al finalizar</li>
-          <li>Operación cerrada sin estrés</li>
-          <li>Productora tranquila, cliente feliz</li>
-        </ul>
-      </article>
-
-    </div>
-
-    <div class="spacer-14"></div>
-
-    <!-- Testimonio -->
-    <div class="quote">
-      <p>
-        “Roble funciona como un brazo operativo: llegan, montan, atienden y cierran
-        sin que yo tenga que estar encima.”
-      </p>
-      <b>— Productora boutique (reemplazar por testimonio real)</b>
-    </div>
-  </div>
 </section>
-
-
-
-<!-- =========================
-SECCIÓN: GALERÍA (Carrusel)
-Pega esto donde quieras mostrar fotos (ideal: después del Hero o después de “Así funcionan los eventos…”)
-
-Requisitos en index.html:
-1) Tener <script src="./app.js" defer></script>
-2) Agregar el CSS y JS de abajo.
-3) Reemplazar las URLs de las imágenes por las tuyas.
-========================= -->
-<section id="galeria">
-  <div class="container">
-    <div class="sectionTitle">
-      <div>
-        <h2>Galería de eventos</h2>
-        <p>Montaje impecable, pizzas en vivo y una experiencia que hace quedar bien a la productora.</p>
-      </div>
-      <div class="pill">Roble en acción</div>
-    </div>
-
-    <div class="carousel" aria-label="Carrusel de imágenes Roble">
-      <!-- Botón anterior -->
-      <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Imagen anterior" data-carousel-prev>
-        ‹
-      </button>
-
-      <!-- Viewport (lo que se desplaza) -->
-      <div class="carousel__viewport" data-carousel-viewport tabindex="0" aria-roledescription="carrusel">
-        <div class="carousel__track" data-carousel-track>
-          <!-- Slide 1 -->
-          <figure class="carousel__slide">
-            <img
-              src="./img/carrusel/images.jpg"
-              alt="Pizza artesanal recién salida del horno"
-              loading="lazy"
-            />
-            <figcaption>Pizzas en vivo (flujo continuo)</figcaption>
-          </figure>
-
-          <!-- Slide 2 -->
-          <figure class="carousel__slide">
-            <img
-              src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=80"
-              alt="Montaje de catering con estética limpia y premium"
-              loading="lazy"
-            />
-            <figcaption>Montaje limpio y nivel banquetero</figcaption>
-          </figure>
-
-          <!-- Slide 3 -->
-          <figure class="carousel__slide">
-            <img
-              src="https://images.unsplash.com/photo-1528137871618-79d2761e3fd5?auto=format&fit=crop&w=1600&q=80"
-              alt="Ingredientes frescos para pizzas"
-              loading="lazy"
-            />
-            <figcaption>Ingredientes frescos y operación ordenada</figcaption>
-          </figure>
-
-          <!-- Slide 4 -->
-          <figure class="carousel__slide">
-            <img
-              src="https://images.unsplash.com/photo-1600628422019-7b38e3d8f49a?auto=format&fit=crop&w=1600&q=80"
-              alt="Servicio de pizzas en evento"
-              loading="lazy"
-            />
-            <figcaption>Experiencia que eleva el evento</figcaption>
-          </figure>
-        </div>
+  <!-- CARRUSEL DE FOTOS -->
+  <section class="section section--alt" style="padding:80px 0;">
+    <div class="container">
+      <div class="text-center fade-up" style="margin-bottom:2.5rem;">
+        <span class="eyebrow">Nuestras pizzas</span>
+        <h2>Directo del horno napolitano</h2>
+        <p style="text-align:center;margin:0.75rem auto 0;">Masa con 36–42 horas de fermentación, cocción a 480° y el sabor único del roble.</p>
       </div>
 
-      <!-- Botón siguiente -->
-      <button class="carousel__btn carousel__btn--next" type="button" aria-label="Imagen siguiente" data-carousel-next>
-        ›
-      </button>
-    </div>
+      <div class="carousel fade-up">
+        <button class="carousel__btn carousel__btn--prev" aria-label="Anterior">&#8592;</button>
 
-    <!-- Dots -->
-    <div class="carouselDots" aria-label="Navegación del carrusel" data-carousel-dots></div>
-  </div>
-</section>
+        <div class="carousel__track-wrap">
+          <div class="carousel__track" id="carouselTrack">
 
-<section id="catering-pizzas-eventos-santiago" class="seoSection" aria-label="Catering de pizzas para eventos en Santiago">
-  <div class="container">
-    <div class="sectionTitle">
-      <div>
-        <h2>Catering de pizzas en vivo para eventos en Santiago</h2>
-        <p>
-          Roble Pizzas es un servicio de <strong>catering de pizzas en vivo</strong> pensado para
-          <strong>productoras de eventos</strong> y <strong>banqueteras</strong> que necesitan un proveedor confiable,
-          con <strong>montaje impecable</strong> y <strong>flexibilidad real</strong>.
-          Operamos principalmente en <strong>Santiago</strong> para eventos de <strong>50 a 150 personas</strong>.
-        </p>
-      </div>
-    </div>
-
-    <div class="seoGrid">
-      <article class="seoCard">
-        <h3>Eventos corporativos y experiencias boutique</h3>
-        <p>
-          Trabajamos en <strong>eventos corporativos</strong>, cierres de año, lanzamientos, workshops y activaciones.
-          El objetivo es simple: que tu evento fluya y que la experiencia gastronómica se vea profesional.
-          Si tu cliente busca algo distinto al cóctel tradicional, las <strong>pizzas en vivo</strong> son un formato
-          que encanta y se entiende rápido.
-        </p>
-        <ul class="list">
-          <li><strong>Servicio continuo</strong> para mantener el ritmo del evento</li>
-          <li><strong>Estética limpia</strong> (nivel banquetero) para cuidar la imagen</li>
-          <li><strong>Operación ordenada</strong> para que la productora no esté encima</li>
-        </ul>
-      </article>
-
-      <article class="seoCard">
-        <h3>Productoras y banqueteras: partner operativo</h3>
-        <p>
-          Si estás armando tu red de proveedores, Roble Pizzas funciona como un <strong>brazo operativo</strong>:
-          llegamos con stand completo, hornos, insumos y equipo, montamos con tiempo, atendemos y cerramos limpio.
-          Nos adaptamos a cambios de horario cuando el evento se mueve (porque siempre se mueve).
-        </p>
-        <ul class="list">
-          <li><strong>Montaje completo</strong>: hornos, mesas, mantelería y utensilios</li>
-          <li><strong>Extras escalables</strong>: garzones, barra o personal adicional</li>
-          <li><strong>Comunicación clara</strong>: coordinación previa para evitar sorpresas</li>
-        </ul>
-      </article>
-
-      <article class="seoCard seoCard--wide">
-        <h3>¿En qué zonas de Santiago trabajamos?</h3>
-        <p>
-          Atendemos eventos en distintas comunas de <strong>Santiago</strong>, especialmente donde se concentran
-          eventos corporativos y productoras boutique: <strong>Providencia</strong>, <strong>Las Condes</strong>,
-          <strong>Ñuñoa</strong>, <strong>Vitacura</strong> y sectores cercanos (según logística del evento).
-          Si tu evento es fuera de estas comunas, igual podemos evaluarlo.
-        </p>
-
-        <div class="seoPills" aria-label="Zonas de servicio">
-          <span class="pill">Providencia</span>
-          <span class="pill">Las Condes</span>
-          <span class="pill">Ñuñoa</span>
-          <span class="pill">Vitacura</span>
-          <span class="pill">Santiago Centro</span>
-        </div>
-
-        <div class="spacer-10"></div>
-
-        <div class="ctaBand">
-          <div>
-            <h3>Cuéntanos tu evento y te respondemos rápido</h3>
-            <p>Fecha, asistentes, lugar y formato. Con eso te enviamos una propuesta clara.</p>
-          </div>
-          <div class="ctaBand__actions">
-            <a class="btn btn--primary" href="#contacto">Cotizar ahora</a>
-            <a class="btn btn--ghost" id="whatsBtnSeo" href="#" rel="nofollow">WhatsApp</a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-
-    <!-- =========================
-    FAQ
-    ========================= -->
-    <section id="faq">
-      <div class="container">
-        <div class="sectionTitle">
-          <div>
-            <h2>Preguntas frecuentes</h2>
-            <p>Respuestas claras para que puedas vender esto a tu cliente final sin fricción.</p>
-          </div>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <h3>¿Qué incluye el servicio?</h3>
-            <p>Stand completo, hornos, mesas, manteles, utensilios, servilletas, insumos base, gas y transporte. Extras opcionales: garzones, barra, personal extra.</p>
-          </article>
-          <article class="card">
-            <h3>¿Se adaptan a cambios de horario?</h3>
-            <p>Sí. La flexibilidad es parte del servicio: coordinamos contigo para ajustar sin caos (según condiciones del evento y logística).</p>
-          </article>
-          <article class="card">
-            <h3>¿Para cuántas personas es ideal?</h3>
-            <p>Nuestro foco son eventos boutique de <b>50 a 150 personas</b>, donde la operación y la imagen importan.</p>
-          </article>
-          <article class="card">
-            <h3>¿Qué incluye el servicio?</h3>
-            <p>Stand completo, hornos, mesas, manteles, utensilios, servilletas, insumos base, gas y transporte. Extras opcionales: garzones, barra, personal extra.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================
-    CONTACTO
-    - Formulario abre WhatsApp con mensaje listo.
-    - Fallback: mailto
-    ========================= -->
-    <section id="contacto">
-      <div class="container">
-        <div class="sectionTitle">
-          <div>
-            <h2>Cotiza tu evento</h2>
-            <p>Respuesta rápida y propuesta clara. Tu evento, nuestro compromiso.</p>
-          </div>
-        </div>
-
-        <div class="contact">
-          <div class="form">
-            <form id="quoteForm" novalidate>
-              <div class="field">
-                <label for="name">Nombre</label>
-                <input id="name" name="name" autocomplete="name" placeholder="Ej: Valentina Pérez" required />
-              </div>
-
-              <div class="field">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@productora.cl" required />
-              </div>
-
-              <div class="field">
-                <label for="phone">WhatsApp</label>
-                <input id="phone" name="phone" inputmode="tel" placeholder="+56 9 1234 5678" required />
-              </div>
-
-              <div class="field">
-                <label for="guests">Asistentes</label>
-                <select id="guests" name="guests" required>
-                  <option value="" selected disabled>Selecciona…</option>
-                  <option>50</option>
-                  <option>80–100</option>
-                  <option>120–150</option>
-                  <option>Más de 150</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="date">Fecha del evento</label>
-                <input id="date" name="date" type="date" required />
-              </div>
-
-              <div class="field">
-                <label for="msg">Cuéntanos el evento</label>
-                <textarea id="msg" name="msg" placeholder="Lugar, horario, tipo de evento, si necesitas garzones/barra, etc." required></textarea>
-              </div>
-
-              <button class="btn btn--primary" type="submit">Enviar cotización</button>
-              <p class="note">
-                Al enviar, se abrirá tu WhatsApp (recomendado) o tu email con el mensaje listo.
-                Ajusta los datos de contacto en <b>app.js</b>.
-              </p>
-            </form>
-          </div>
-
-          <div>
-            <div class="card card--auto">
-              <h3>Contacto directo</h3>
-              <p class="card__text">
-                Si estás contra el tiempo, escríbenos y lo resolvemos:
-              </p>
-              <div class="actions">
-                <a class="btn btn--primary" id="whatsBtnBottom" href="https://wa.me/123456789" rel="nofollow">WhatsApp</a>
-                <a class="btn btn--ghost" id="mailBtn" href="#">Email</a>
-              </div>
-              <div class="spacer-10"></div>
-              <p class="meta">
-                <b>Zona:</b> Santiago, Chile<br>
-                <b>Especialidad:</b> Pizzas en vivo (50–150 asistentes)<br>
-                <b>Valores:</b> Confianza, calidad, cercanía, excelencia operativa
-              </p>
+            <!-- SLIDE 1 — reemplaza src por tu foto -->
+            <div class="carousel__slide">
+              <img src="./Fotos/IMG_9909.jpg" alt="Pizza Margherita napolitana" />
+              <div class="carousel__caption"></div>
             </div>
 
-            <div class="spacer-14"></div>
-
-            <div class="card card--auto">
-              <h3>Para productoras (copy listo)</h3>
-              <p class="meta">
-                “Roble Pizzas: catering en vivo con montaje profesional y flexibilidad real.
-                Operamos como parte de tu equipo para que tú quedes excelente frente al cliente final.”
-              </p>
+            <!-- SLIDE 2 -->
+            <div class="carousel__slide">
+              <img src="./Fotos/fotosofi.png" alt="Pizza Pepperoni napolitana" />
+              <div class="carousel__caption"></div>
             </div>
+
+            <!-- SLIDE 3 -->
+            <div class="carousel__slide">
+              <img src="./Fotos/Con todo el AMOR.zip - 1.png" alt="Pizza Jamón Serrano" />
+              <div class="carousel__caption"></div>
+            </div>
+
+            <!-- SLIDE 4 -->
+            <div class="carousel__slide">
+              <img src="./Fotos/Peperonni_1.webp" alt="Pizza Pesto Capresse" />
+              <div class="carousel__caption"></div>
+            </div>
+
+            <!-- SLIDE 5 -->
+            <div class="carousel__slide">
+              <img src="./Fotos/Capresse.jpg" alt="Pizza Champiñón" />
+              <div class="carousel__caption"></div>
+            </div>
+
+            <!-- SLIDE 6 -->
+            <div class="carousel__slide">
+              <img src="./Fotos/garzonpizza.jpg" alt="Pizza Queso Azul" />
+              <div class="carousel__caption"></div>
+            </div>
+
           </div>
         </div>
 
-        <div class="footer">
-          © <span id="year"></span> Roble Pizzas. Todos los derechos reservados.
+        <button class="carousel__btn carousel__btn--next" aria-label="Siguiente">&#8594;</button>
+        <div class="carousel__dots" id="carouselDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIADORES -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="text-center fade-up" style="margin-bottom:3rem;">
+        <span class="eyebrow">¿Por qué Roble Pizzas?</span>
+        <h2>Lo que nos hace diferentes</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature fade-up">
+          <div class="feature__icon">🌾</div>
+          <h3>Masa de fermentación lenta</h3>
+          <p>36 a 42 horas de fermentación. Una masa más digestiva, con más sabor y esa textura aérea que caracteriza a la pizza napolitana.</p>
+        </div>
+        <div class="feature fade-up">
+          <div class="feature__icon">🍅</div>
+          <h3>Ingredientes 100% premium</h3>
+          <p>Salsa de tomate italiana, mozzarella de calidad premium, aceite de oliva y toppings seleccionados personalmente. Sin atajos.</p>
+        </div>
+        <div class="feature fade-up">
+          <div class="feature__icon">🪵</div>
+          <h3>Ahumados en roble</h3>
+          <p>Ingredientes seleccionados ahumados en madera de roble. Un diferenciador único que eleva cada bocado a otra categoría.</p>
+        </div>
+        <div class="feature fade-up">
+         
+      
+        <div class="feature fade-up">
+          <div class="feature__icon">🤝</div>
+          <h3>Trato personalizado</h3>
+          <p>Cada evento es único. Me coordino directamente contigo para asegurarme de que el servicio se adapte perfectamente a tu celebración.</p>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <!-- Toast (mensajes breves) -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- PIZZAS MENU -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="text-center fade-up" style="margin-bottom:3rem;">
+        <span class="eyebrow">Nuestras pizzas</span>
+        <h2>Variedades del menú</h2>
+        <p style="margin:1rem auto 0;">Todas sobre una base de mozzarella, parmesano, salsa italiana y aceite de oliva o aceite ahumado.</p>
+      </div>
+      <div class="pizza-grid">
+        <div class="pizza-card fade-up">
+          <h4>🍕 La Clásica Pepperoni</h4>
+          <ul>
+            <li>Pepperoni artesanal</li>
+            <li>Mozzarella premium</li>
+            <li>Base de tomate italiano</li>
+          </ul>
+        </div>
+        <div class="pizza-card fade-up">
+          <h4>🌿 Margherita</h4>
+          <ul>
+            <li>Base napolitana clásica</li>
+            <li>Albahaca fresca</li>
+            <li>Aceite de oliva virgen</li>
+          </ul>
+        </div>
+        <div class="pizza-card fade-up">
+          <h4>🌱 Pesto Capresse</h4>
+          <ul>
+            <li>Tomates cherry mix</li>
+            <li>Pesto de albahaca ahumado</li>
+            <li>Mozzarella fior di latte</li>
+          </ul>
+        </div>
+        <div class="pizza-card fade-up">
+          <h4>🥩 Jamón Serrano</h4>
+          <ul>
+            <li>Rúcula fresca</li>
+            <li>Jamón serrano</li>
+            <li>Champiñones</li>
+          </ul>
+        </div>
+        <div class="pizza-card fade-up">
+          <h4>🍄 Champiñón</h4>
+          <ul>
+            <li>Jamón de pierna</li>
+            <li>Pistacho</li>
+            <li>Champiñones</li>
+          </ul>
+        </div>
+        <div class="pizza-card fade-up">
+          <h4>🧀 Queso Azul</h4>
+          <ul>
+            <li>Queso azul</li>
+            <li>Cebolla caramelizada</li>
+            <li>Salsa de vino tinto</li>
+          </ul>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem;">
+        <a href="cotizar.html" class="btn btn-primary">Cotizar con este menú →</a>
+      </div>
+    </div>
+  </section>
 
-  <!-- JS -->
-  <script src="app.js"></script>
+
+  <!-- PRECIO -->
+  <section class="section section--alt">
+    <div class="container text-center">
+      <div class="fade-up" style="margin-bottom:2rem;">
+        <span class="eyebrow">Precio de referencia</span>
+        <h2>Servicio completo por persona</h2>
+      </div>
+      <div class="price-box fade-up">
+        <div style="font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(253,250,246,0.4);">Desde</div>
+        <div class="price-box__price">$7.000</div>
+        <div class="price-box__unit">por persona · servicio 3 horas</div>
+        <ul>
+          <li>Pizzas ilimitadas durante 3 horas</li>
+          <li>2 hornos napolitanos a 480°</li>
+          <li>Equipo de garzones incluido</li>
+          <li>Stand completo con 4 mesas</li>
+          <li>Traslado y montaje incluido</li>
+          <li>Desmontaje y limpieza final</li>
+        </ul>
+        <a href="cotizar.html" class="btn btn-primary" style="width:100%;justify-content:center;">Cotizar mi evento →</a>
+      </div>
+      <p style="margin:1.5rem auto 0;font-size:0.85rem;text-align:center;">El precio final puede variar según la cantidad de personas, la ubicación y el tipo de evento. <a href="cotizar.html" style="color:var(--acento);font-weight:700;">Cotiza sin compromiso.</a></p>
+    </div>
+  </section>
+
+
+
+  <!-- CTA FINAL -->
+  <section class="cta-band">
+    <div class="container fade-up">
+      <span class="eyebrow" style="color:var(--madera);">¿Listo para cotizar?</span>
+      <h2>Hagamos de tu evento algo memorable</h2>
+      <p>Cuéntame sobre tu celebración y te envío una cotización sin compromiso. Matrimonios, cumpleaños, eventos corporativos, graduaciones — estamos para todos.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
+        <a href="nosotros.html" class="btn btn-outline">Conocer la historia</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">Roble Pizzas</div>
+          <div class="footer__brand-sub">Pizzería Napolitana para Eventos</div>
+          <p class="footer__desc">Pizza artesanal en vivo para tu celebración. Masa de fermentación lenta, ingredientes premium y el sabor único del roble.</p>
+        </div>
+        <div>
+          <h4>Navegar</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="archivo.html">Galería</a></li>
+            <li><a href="cotizar.html">Cotizar evento</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <div class="footer__contact-item">📞 <span>+56 9 9199 9301</span></div>
+          <div class="footer__contact-item">🌐 <a href="https://www.jvialeventos.cl" style="color:rgba(253,250,246,0.55);transition:color 0.3s;" onmouseover="this.style.color='#A47148'" onmouseout="this.style.color='rgba(253,250,246,0.55)'">jvialeventos.cl</a></div>
+          <div class="footer__contact-item" style="margin-top:0.5rem;">👨‍🍳 <span>Juan Vial — Dueño & Pizzaiolo</span></div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2024 Roble Pizzas. Todos los derechos reservados.</span>
+        <span>Hecho con 🔥 en Santiago, Chile</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
 
+
+
+
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__bg">
+        <img
+          src="./Fotos/IMG_9849.JPG"
+          alt="Roble Pizzas preparando pizza napolitana en un evento"
+          class="hero__bg-img"
+        />
+      </div>
+
+      <div class="container">
+        <div class="hero__content fade-up">
+          <div class="hero__tag">Roble Pizzas · Pizzería móvil para eventos en Santiago</div>
+
+          <h1>Pizza napolitana en vivo para eventos que quieren dejar huella</h1>
+
+          <p class="hero__sub">
+            En Roble Pizzas llevamos una experiencia gastronómica completa a matrimonios,
+            cumpleaños y eventos corporativos: masa de fermentación lenta, ingredientes premium,
+            hornos napolitanos y servicio en vivo de principio a fin.
+          </p>
+
+          <div class="hero__btns">
+            <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
+            <a href="#como-funciona" class="btn btn-outline">Cómo funciona</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__scroll">Descubre</div>
+    </section>
