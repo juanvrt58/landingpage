@@ -53,6 +53,116 @@
 
   <link rel="stylesheet" href="style.css" />
 
+  <!-- ══ RESPONSIVE OVERRIDES ══ -->
+  <style>
+    /* ── Clamp-based responsive fixes ── */
+    .hero {
+      min-height: 100vh;
+      min-height: 100dvh; /* dynamic viewport for mobile browsers */
+    }
+    .hero__content h1 {
+      font-size: clamp(1.6rem, 4.5vw, 3rem);
+    }
+    .hero__sub {
+      font-size: clamp(0.9rem, 2vw, 1.15rem);
+    }
+    .hero__btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    /* Nav mobile fix */
+    @media (max-width: 768px) {
+      .nav__inner {
+        flex-wrap: wrap;
+      }
+      .nav__links {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+        padding: 1rem 0;
+      }
+      .nav__links.active {
+        display: flex;
+      }
+    }
+
+    /* Section padding responsive */
+    .section {
+      padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 4vw, 2rem);
+    }
+
+    /* Feature grid fix */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: clamp(1rem, 3vw, 2rem);
+    }
+
+    /* Steps responsive */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: clamp(1rem, 3vw, 2rem);
+    }
+
+    /* Pizza grid responsive */
+    .pizza-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: clamp(1rem, 3vw, 1.5rem);
+    }
+
+    /* Intro grid responsive */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 768px) {
+      .intro-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+    }
+
+    /* Video responsive */
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+
+    /* Price box responsive */
+    .price-box {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    /* Carousel responsive */
+    .carousel {
+      overflow: hidden;
+    }
+
+    /* Footer grid responsive */
+    .footer__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    /* Strip overflow fix */
+    .strip { overflow: hidden; }
+  </style>
+
   <!-- ══ SCHEMA: LocalBusiness + FoodEstablishment ══ -->
   <script type="application/ld+json">
   {
@@ -148,7 +258,7 @@
   }
   </script>
 
-  <!-- ══ SCHEMA: FAQPage — genera rich snippets en Google ══ -->
+  <!-- ══ SCHEMA: FAQPage ══ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -228,20 +338,15 @@
   }
   </script>
   <script src="script.js"></script>
-          <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-857287577"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-857287577');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-857287577"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-857287577');
+  </script>
 </head>
-
-
-
-
 
 <body>
 
@@ -264,36 +369,36 @@
   </nav>
 
   <!-- HERO -->
-<section class="hero">
-  <div class="hero__bg">
-    <img
-      src="./Fotos/IMG_9849.JPG"
-      alt="Roble Pizzas preparando pizza napolitana en un evento"
-      class="hero__bg-img"
-    />
-  </div>
+  <section class="hero">
+    <div class="hero__bg">
+      <img
+        src="./Fotos/IMG_9849.JPG"
+        alt="Roble Pizzas preparando pizza napolitana en un evento en Santiago"
+        class="hero__bg-img"
+      />
+    </div>
 
-  <div class="container">
-    <div class="hero__content fade-up">
-      <div class="hero__tag">Roble Pizzas · Pizzería móvil para eventos en Santiago</div>
+    <div class="container">
+      <div class="hero__content fade-up">
+        <div class="hero__tag">Roble Pizzas · Pizzería napolitana móvil en Santiago</div>
 
-      <h1>Pizza napolitana en vivo para eventos que quieren hacer algo distinto</h1>
+        <h1>Pizza napolitana en vivo para tu matrimonio, cumpleaños o evento</h1>
 
-      <p class="hero__sub">
-        En Roble Pizzas llevamos una experiencia gastronómica completa a matrimonios,
-        cumpleaños y eventos corporativos: masa de fermentación lenta, ingredientes premium,
-        hornos napolitanos y servicio en vivo de principio a fin.
-      </p>
+        <p class="hero__sub">
+          Llevamos una experiencia gastronómica completa a tu celebración: masa de fermentación lenta 36–42h,
+          ingredientes premium, hornos napolitanos a 480° y servicio en vivo. Desde $7.000 por persona.
+        </p>
 
-      <div class="hero__btns">
-        <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
-        <a href="#como-funciona" class="btn btn-outline">Cómo funciona</a>
+        <div class="hero__btns">
+          <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
+          <a href="#como-funciona" class="btn btn-outline">Cómo funciona</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="hero__scroll">Descubre</div>
-</section>
+    <div class="hero__scroll">Descubre</div>
+  </section>
+
   <!-- STRIP -->
   <div class="strip">
     <div class="strip__track">
@@ -313,46 +418,42 @@
   </div>
 
   <!-- INTRO -->
- <!-- INTRO -->
-<section class="section">
-  <div class="container">
-    <div class="intro-grid">
-      <div class="fade-up">
-        <span class="eyebrow">El servicio</span>
-        <h2>Una pizzería napolitana que llega hasta tu evento</h2>
-        <div class="ornament"><span>🌿</span></div>
+  <section class="section">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="fade-up">
+          <span class="eyebrow">El servicio</span>
+          <h2>Una pizzería napolitana que llega hasta tu evento</h2>
+          <div class="ornament"><span>🌿</span></div>
 
-        <p class="intro-text">
-          En Roble Pizzas no solo llevamos pizzas: llevamos una experiencia para tus invitados.
-          Tu evento se convierte en algo memorable cuando tus invitados ven cómo cada pizza se prepara en vivo,
-          se estira con el método italiano tradicional y sale directa del horno napolitano.
-        </p>
+          <p class="intro-text">
+            En Roble Pizzas no solo llevamos pizzas: llevamos una experiencia para tus invitados.
+            Tu evento se convierte en algo memorable cuando ven cómo cada pizza se prepara en vivo,
+            se estira con el método italiano tradicional y sale directa del horno napolitano.
+          </p>
 
-        <p>
-          Nos encargamos de todo: el montaje del stand, los hornos, el equipo, el servicio y la limpieza.
-          Tú solo disfrutas.
-        </p>
+          <p>
+            Nos encargamos de todo: montaje del stand, hornos, equipo, servicio y limpieza.
+            Tú solo disfrutas.
+          </p>
 
-        <div class="intro-actions">
-          <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
-        </div>
-      </div>
-
-      <div class="fade-up intro-side">
-        <div class="img-slot intro-photo">
-          <img
-            src="./Fotos/IMG_9849.JPG"
-            alt="Roble Pizzas en un evento"
-          />
-          <div class="img-slot__label">Roble Pizzas en acción</div>
+          <div class="intro-actions">
+            <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
+          </div>
         </div>
 
-     
+        <div class="fade-up intro-side">
+          <div class="img-slot intro-photo">
+            <img
+              src="./Fotos/IMG_9849.JPG"
+              alt="Roble Pizzas preparando pizzas en un evento"
+            />
+            <div class="img-slot__label">Roble Pizzas en acción</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- CÓMO FUNCIONA -->
   <section class="section" id="como-funciona">
@@ -365,26 +466,26 @@
         <div class="step fade-up">
           <div class="step__num">01</div>
           <h3>Llegamos a tu evento</h3>
-          <p>Llegamos 60 minutos antes del inicio del servicio para montar el stand, los hornos y preparar todo.</p>
+          <p>60 minutos antes del servicio montamos el stand, los hornos y preparamos todo.</p>
         </div>
         <div class="step fade-up">
           <div class="step__num">02</div>
           <h3>Arrancamos con todo</h3>
-          <p>Preparamos las primeras pizzas para que todos tus invitados reciban su primer pedazo rápidamente, sin esperas largas.</p>
+          <p>Las primeras pizzas salen rápido para que todos tus invitados reciban su primer pedazo sin esperas.</p>
         </div>
         <div class="step fade-up">
           <div class="step__num">03</div>
           <h3>Servicio sin parar</h3>
-          <p>Durante las 3 horas del servicio, el equipo no para: pizzas saliendo del horno, garzones repartiendo, orden y limpieza total.</p>
+          <p>Durante 3 horas: pizzas saliendo del horno, garzones repartiendo, orden y limpieza total.</p>
         </div>
         <div class="step fade-up">
           <div class="step__num">04</div>
           <h3>Cerramos y nos vamos</h3>
-          <p>Al terminar, desmontamos todo y dejamos el espacio impecable. Si sobran pizzas, hacemos un break y continuamos.</p>
+          <p>Desmontamos todo y dejamos el espacio impecable. Si sobran pizzas, seguimos sirviendo.</p>
         </div>
       </div>
 
-      <div style="margin-top:4rem;background:var(--fondo-alt);border-radius:8px;padding:2.5rem;border:1px solid var(--borde);" class="fade-up">
+      <div style="margin-top:clamp(2rem,5vw,4rem);background:var(--fondo-alt);border-radius:8px;padding:clamp(1.5rem,4vw,2.5rem);border:1px solid var(--borde);" class="fade-up">
         <h3 style="margin-bottom:1rem;">¿Qué necesitas tener listo?</h3>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;">
           <div style="display:flex;gap:0.75rem;align-items:flex-start;">
@@ -403,79 +504,84 @@
       </div>
     </div>
   </section>
-<!-- VIDEO -->
-<section class="section section--dark" style="padding:80px 0;">
-  <div class="container">
-    <div class="text-center fade-up" style="margin-bottom:2.5rem;">
-      <span class="eyebrow">Míranos en acción</span>
-      <h2>La experiencia Roble Pizzas</h2>
-      <p style="margin:0.75rem auto 0;text-align:center;">
-        Así se vive tener una pizzería napolitana en tu evento.
-      </p>
+
+  <!-- VIDEO -->
+  <section class="section section--dark" style="padding:clamp(3rem,8vw,5rem) 0;">
+    <div class="container">
+      <div class="text-center fade-up" style="margin-bottom:2.5rem;">
+        <span class="eyebrow">Míranos en acción</span>
+        <h2>La experiencia Roble Pizzas</h2>
+        <p style="margin:0.75rem auto 0;text-align:center;">
+          Así se vive tener una pizzería napolitana en tu evento.
+        </p>
+      </div>
+
+      <div class="video-wrapper fade-up">
+        <iframe
+          src="https://www.youtube.com/embed/JGFgv7j3bfo"
+          title="Roble Pizzas en acción — pizza napolitana en vivo para eventos"
+          referrerpolicy="strict-origin-when-cross-origin"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
     </div>
+  </section>
 
-    <div class="video-wrapper fade-up">
-  <iframe
-    src="https://www.youtube.com/embed/JGFgv7j3bfo"
-    title="Roble Pizzas en acción"
-    referrerpolicy="strict-origin-when-cross-origin"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen>
-  </iframe>
-</div>
-  </div>
-</section>
-<!-- INTRO SERVICIO -->
-    <section class="section">
-      <div class="container">
-        <div class="service-intro">
-          <div class="service-intro__content fade-up">
-            <span class="eyebrow">El servicio</span>
-            <h3>Más que pizzas: una experiencia en vivo, cuidada de principio a fin</h3>
-            <div class="ornament"><span>•</span></div>
+  <!-- INTRO SERVICIO -->
+  <section class="section">
+    <div class="container">
+      <div class="service-intro">
+        <div class="service-intro__content fade-up">
+          <span class="eyebrow">El servicio</span>
+          <h3>Más que pizzas: una experiencia en vivo, cuidada de principio a fin</h3>
+          <div class="ornament"><span>•</span></div>
 
-            <p>
-              En Roble Pizzas no llegamos solo a cocinar. Llegamos a montar una experiencia completa
-              alrededor de la pizza napolitana: instalamos el stand, preparamos los hornos, cocinamos
-              en vivo, servimos durante todo el evento y al final desmontamos todo de forma ordenada.
-            </p>
+          <p>
+            En Roble Pizzas no llegamos solo a cocinar. Montamos una experiencia completa
+            alrededor de la pizza napolitana: instalamos el stand, preparamos los hornos, cocinamos
+            en vivo, servimos durante todo el evento y al final desmontamos todo.
+          </p>
 
-            <p>
-              La gracia está en que tus invitados no solo comen bien. También ven cómo se estira la masa,
-              cómo trabaja el horno, cómo salen las pizzas recién hechas y cómo cada parte del servicio
-              está pensada para generar un momento memorable.
-            </p>
+          <p>
+            Tus invitados no solo comen bien. Ven cómo se estira la masa,
+            cómo trabaja el horno, cómo salen las pizzas recién hechas. Cada parte del servicio
+            está pensada para generar un momento memorable.
+          </p>
 
-            <p>
-              Es una propuesta ideal para quienes quieren algo distinto, cálido y bien ejecutado.
-              Ya sea un matrimonio, un cumpleaños o un evento corporativo, la comida deja de ser solo
-              acompañamiento y se convierte en parte importante de la experiencia.
-            </p>
+          <p>
+            Ideal para quienes quieren algo distinto, cálido y bien ejecutado.
+            Ya sea un matrimonio, un cumpleaños o un evento corporativo, la comida deja de ser
+            acompañamiento y se convierte en parte central de la experiencia.
+          </p>
 
-            <div class="service-points">
-              <div class="service-point">
-                <strong>Montaje completo</strong>
-                <span>Llegamos con anticipación, instalamos todo y dejamos el stand listo para comenzar.</span>
-              </div>
-              <div class="service-point">
-                <strong>Preparación en vivo</strong>
-                <span>Las pizzas se hacen frente a los invitados, recién salidas del horno napolitano.</span>
-              </div>
-              <div class="service-point">
-                <strong>Servicio continuo</strong>
-                <span>El equipo reparte, mantiene el orden y sostiene el ritmo durante todo el evento.</span>
-              </div>
+          <div class="service-points">
+            <div class="service-point">
+              <strong>Montaje completo</strong>
+              <span>Llegamos con anticipación, instalamos todo y dejamos el stand listo.</span>
             </div>
-
-            <div class="service-intro__actions">
-              <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
+            <div class="service-point">
+              <strong>Preparación en vivo</strong>
+              <span>Las pizzas se hacen frente a los invitados, recién salidas del horno napolitano.</span>
+            </div>
+            <div class="service-point">
+              <strong>Servicio continuo</strong>
+              <span>El equipo reparte, mantiene el orden y sostiene el ritmo durante todo el evento.</span>
             </div>
           </div>
 
-</section>
+          <div class="service-intro__actions">
+            <a href="cotizar.html" class="btn btn-primary">Cotizar mi evento →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CARRUSEL DE FOTOS -->
-  <section class="section section--alt" style="padding:80px 0;">
+  <section class="section section--alt" style="padding:clamp(3rem,8vw,5rem) 0;">
     <div class="container">
       <div class="text-center fade-up" style="margin-bottom:2.5rem;">
         <span class="eyebrow">Nuestras pizzas</span>
@@ -485,49 +591,28 @@
 
       <div class="carousel fade-up">
         <button class="carousel__btn carousel__btn--prev" aria-label="Anterior">&#8592;</button>
-
         <div class="carousel__track-wrap">
           <div class="carousel__track" id="carouselTrack">
-
-            <!-- SLIDE 1 — reemplaza src por tu foto -->
             <div class="carousel__slide">
-              <img src="./Fotos/IMG_9909.jpg" alt="Pizza Margherita napolitana" />
-              <div class="carousel__caption"></div>
+              <img src="./Fotos/IMG_9909.jpg" alt="Pizza Margherita napolitana de Roble Pizzas" />
             </div>
-
-            <!-- SLIDE 2 -->
             <div class="carousel__slide">
-              <img src="./Fotos/fotosofi.png" alt="Pizza Pepperoni napolitana" />
-              <div class="carousel__caption"></div>
+              <img src="./Fotos/fotosofi.png" alt="Pizza Pepperoni napolitana artesanal" />
             </div>
-
-            <!-- SLIDE 3 -->
             <div class="carousel__slide">
-              <img src="./Fotos/Con todo el AMOR.zip - 1.png" alt="Pizza Jamón Serrano" />
-              <div class="carousel__caption"></div>
+              <img src="./Fotos/Con todo el AMOR.zip - 1.png" alt="Pizza Jamón Serrano de Roble Pizzas" />
             </div>
-
-            <!-- SLIDE 4 -->
             <div class="carousel__slide">
-              <img src="./Fotos/Peperonni_1.webp" alt="Pizza Pesto Capresse" />
-              <div class="carousel__caption"></div>
+              <img src="./Fotos/Peperonni_1.webp" alt="Pizza Pesto Capresse con ingredientes premium" />
             </div>
-
-            <!-- SLIDE 5 -->
             <div class="carousel__slide">
-              <img src="./Fotos/Capresse.jpg" alt="Pizza Champiñón" />
-              <div class="carousel__caption"></div>
+              <img src="./Fotos/Capresse.jpg" alt="Pizza Champiñón napolitana" />
             </div>
-
-            <!-- SLIDE 6 -->
             <div class="carousel__slide">
-              <img src="./Fotos/garzonpizza.jpg" alt="Pizza Queso Azul" />
-              <div class="carousel__caption"></div>
+              <img src="./Fotos/garzonpizza.jpg" alt="Garzón sirviendo pizza napolitana en evento" />
             </div>
-
           </div>
         </div>
-
         <button class="carousel__btn carousel__btn--next" aria-label="Siguiente">&#8594;</button>
         <div class="carousel__dots" id="carouselDots"></div>
       </div>
@@ -545,25 +630,22 @@
         <div class="feature fade-up">
           <div class="feature__icon">🌾</div>
           <h3>Masa de fermentación lenta</h3>
-          <p>36 a 42 horas de fermentación. Una masa más digestiva, con más sabor y esa textura aérea que caracteriza a la pizza napolitana.</p>
+          <p>36 a 42 horas de fermentación. Más sabor, textura aérea y mejor digestibilidad. La técnica tradicional napolitana.</p>
         </div>
         <div class="feature fade-up">
           <div class="feature__icon">🍅</div>
           <h3>Ingredientes 100% premium</h3>
-          <p>Salsa de tomate italiana, mozzarella de calidad premium, aceite de oliva y toppings seleccionados personalmente. Sin atajos.</p>
+          <p>Salsa de tomate italiana, mozzarella premium, aceite de oliva y toppings seleccionados personalmente. Sin atajos.</p>
         </div>
         <div class="feature fade-up">
           <div class="feature__icon">🪵</div>
           <h3>Ahumados en roble</h3>
-          <p>Ingredientes seleccionados ahumados en madera de roble. Un diferenciador único que eleva cada bocado a otra categoría.</p>
+          <p>Ingredientes seleccionados ahumados en madera de roble. Un diferenciador único que eleva cada bocado.</p>
         </div>
-        <div class="feature fade-up">
-         
-      
         <div class="feature fade-up">
           <div class="feature__icon">🤝</div>
           <h3>Trato personalizado</h3>
-          <p>Cada evento es único. Me coordino directamente contigo para asegurarme de que el servicio se adapte perfectamente a tu celebración.</p>
+          <p>Cada evento es único. Me coordino directamente contigo para que el servicio se adapte perfectamente a tu celebración.</p>
         </div>
       </div>
     </div>
@@ -633,7 +715,6 @@
     </div>
   </section>
 
-
   <!-- PRECIO -->
   <section class="section section--alt">
     <div class="container text-center">
@@ -655,11 +736,9 @@
         </ul>
         <a href="cotizar.html" class="btn btn-primary" style="width:100%;justify-content:center;">Cotizar mi evento →</a>
       </div>
-      <p style="margin:1.5rem auto 0;font-size:0.85rem;text-align:center;">El precio final puede variar según la cantidad de personas, la ubicación y el tipo de evento. <a href="cotizar.html" style="color:var(--acento);font-weight:700;">Cotiza sin compromiso.</a></p>
+      <p style="margin:1.5rem auto 0;font-size:0.85rem;text-align:center;">El precio final puede variar según la cantidad de personas, ubicación y tipo de evento. <a href="cotizar.html" style="color:var(--acento);font-weight:700;">Cotiza sin compromiso.</a></p>
     </div>
   </section>
-
-
 
   <!-- CTA FINAL -->
   <section class="cta-band">
@@ -700,20 +779,11 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© 2024 Roble Pizzas. Todos los derechos reservados.</span>
+        <span>© 2025 Roble Pizzas. Todos los derechos reservados.</span>
         <span>Hecho con 🔥 en Santiago, Chile</span>
       </div>
     </div>
   </footer>
 
-
 </body>
 </html>
-
-
-
-
-
-
-
-
