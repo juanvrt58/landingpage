@@ -284,6 +284,10 @@
       .form-card { padding: 1.4rem; }
       .resumen-card { padding: 1.4rem; }
     }
+    .nav.scrolled {
+  background: #0D0804; /* fondo negro/café oscuro */
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
   </style>
 </head>
 <body>
@@ -757,6 +761,15 @@
 
     window.open('https://wa.me/56991999301?text=' + encodeURIComponent(msg), '_blank');
   }
+  // Nav con fondo al hacer scroll
+const nav = document.querySelector('.nav');
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 20) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
 </script>
 </body>
 </html>
