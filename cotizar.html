@@ -558,19 +558,20 @@
   <script src="script.js"></script>
   <script>
   /* ================================================================
-     ROBLE PIZZAS — Lógica del Cotizador
+     ROBLE PIZZAS — Cotizador (mínimo $270.000 para <20 invitados)
+     Sin emojis, precio por persona real según total aplicado
   ================================================================ */
 
   const PIZZAS_MENU = [
-    { emoji: '🍕', nombre: 'La Clásica Pepperoni',  desc: 'Salsa italiana, mozzarella premium, pepperoni artesanal' },
-    { emoji: '🌿', nombre: 'Margherita',             desc: 'Base napolitana, albahaca fresca, aceite de oliva virgen' },
-    { emoji: '🌱', nombre: 'Pesto Capresse',         desc: 'Tomates cherry mix, pesto de albahaca ahumado, fior di latte' },
-    { emoji: '🥩', nombre: 'Jamón Serrano',          desc: 'Jamón serrano, rúcula fresca, champiñones' },
-    { emoji: '🍄', nombre: 'Champiñón',              desc: 'Jamón de pierna, pistacho, champiñones' },
-    { emoji: '🧀', nombre: 'Queso Azul',             desc: 'Queso azul, cebolla caramelizada, salsa de vino tinto' },
+    { emoji: '', nombre: 'La Clásica Pepperoni',  desc: 'Salsa italiana, mozzarella premium, pepperoni artesanal' },
+    { emoji: '', nombre: 'Margherita',             desc: 'Base napolitana, albahaca fresca, aceite de oliva virgen' },
+    { emoji: '', nombre: 'Pesto Capresse',         desc: 'Tomates cherry mix, pesto de albahaca ahumado, fior di latte' },
+    { emoji: '', nombre: 'Jamón Serrano',          desc: 'Jamón serrano, rúcula fresca, champiñones' },
+    { emoji: '', nombre: 'Champiñón',              desc: 'Jamón de pierna, pistacho, champiñones' },
+    { emoji: '', nombre: 'Queso Azul',             desc: 'Queso azul, cebolla caramelizada, salsa de vino tinto' },
   ];
 
-  // Precio EXACTO por número de invitados
+  // Precio por persona (referencia para 20 o más invitados)
   const PRECIOS = {
     15: 14900, 20: 13500, 25: 11300, 30: 12400, 35: 10900,
     40:  9900, 45:  9000, 50:  8400, 60:  7800, 70:  7500,
@@ -582,7 +583,6 @@
   function calcularPizzasMinimas(p) { return Math.ceil(p * 6 / 8); }
 
   function obtenerPrecio(p) {
-    // Busca el valor exacto; si no existe, busca el tramo más cercano hacia arriba
     if (PRECIOS[p] !== undefined) return PRECIOS[p];
     const llaves = Object.keys(PRECIOS).map(Number).sort((a,b) => a - b);
     for (const k of llaves) { if (p <= k) return PRECIOS[k]; }
@@ -590,12 +590,6 @@
   }
 
   function formatCLP(n) { return '$' + Math.round(n).toLocaleString('es-CL'); }
-
-  function calcularTotalPizzas() {
-    let t = 0;
-    document.querySelectorAll('.pizza-qty-input').forEach(i => t += parseInt(i.value) || 0);
-    return t;
-  }
 
   function renderMenu(minPizzas) {
     const base  = Math.floor(minPizzas / PIZZAS_MENU.length);
@@ -617,118 +611,153 @@
     const inv = parseInt(document.getElementById('invitados').value) || 0;
     const bar = document.getElementById('pizzas-bar');
     const ph  = document.getElementById('pizzas-placeholder');
-    if (inv < 15) {
+
+    if (inv < 1) {
       bar.style.display = 'none';
       ph.style.display  = 'block';
-      document.getElementById('menu-container').innerHTML = `<div class="empty-ph"><div class="ep-icon">🌿</div>Ingresa la cantidad de invitados para personalizar el menú.</div>`;
+      document.getElementById('menu-container').innerHTML =
+        '<div class="empty-ph"><div class="ep-icon">---</div>Ingresa la cantidad de invitados para personalizar el menu.</div>';
       actualizarResumen();
       return;
     }
+
     const min = calcularPizzasMinimas(inv);
     bar.style.display = 'flex';
     ph.style.display  = 'none';
     document.getElementById('num-pizzas-bar').textContent    = min;
-    document.getElementById('pizzas-bar-titulo').textContent = `Pizzas | Referencia para ${inv} personas`;
+    document.getElementById('pizzas-bar-titulo').textContent = 'Pizzas | Referencia para ' + inv + ' personas';
     renderMenu(min);
     document.getElementById('ilimitado-note').style.display = 'block';
     actualizarResumen();
   }
 
   function actualizarResumen() {
-  const nombre = document.getElementById('nombre').value.trim();
-  const tipo   = document.getElementById('tipo').value;
-  const inv    = parseInt(document.getElementById('invitados').value) || 0;
-  const fecha  = document.getElementById('fecha').value;
-  const horaPrimeraPizza = document.getElementById('horaPrimeraPizza').value;
-  const comuna = document.getElementById('comuna').value.trim();
+    const nombre = document.getElementById('nombre').value.trim();
+    const tipo   = document.getElementById('tipo').value;
+    const inv    = parseInt(document.getElementById('invitados').value) || 0;
+    const fecha  = document.getElementById('fecha').value;
+    const horaPrimeraPizza = document.getElementById('horaPrimeraPizza').value;
+    const comuna = document.getElementById('comuna').value.trim();
 
-  document.getElementById('res-nombre').textContent = nombre || '—';
-  document.getElementById('res-tipo').textContent   = tipo || '—';
-  document.getElementById('res-comuna').textContent = comuna || '—';
+    document.getElementById('res-nombre').textContent = nombre || '—';
+    document.getElementById('res-tipo').textContent   = tipo || '—';
+    document.getElementById('res-comuna').textContent = comuna || '—';
 
-  if (fecha) {
-    const d = new Date(fecha + 'T12:00:00');
-    document.getElementById('res-fecha').textContent =
-      d.toLocaleDateString('es-CL', { day:'numeric', month:'long', year:'numeric' });
-  } else {
-    document.getElementById('res-fecha').textContent = '—';
+    if (fecha) {
+      const d = new Date(fecha + 'T12:00:00');
+      document.getElementById('res-fecha').textContent =
+        d.toLocaleDateString('es-CL', { day:'numeric', month:'long', year:'numeric' });
+    } else {
+      document.getElementById('res-fecha').textContent = '—';
+    }
+
+    document.getElementById('res-hora-primera-pizza').textContent =
+      horaPrimeraPizza || '—';
+
+    if (inv < 1) {
+      ['res-invitados','res-pizzas','res-pedazos','res-precio-pp','res-total','res-anticipo','res-resto']
+        .forEach(id => { document.getElementById(id).textContent = '—'; });
+      const aviso = document.getElementById('min-aviso');
+      if (aviso) aviso.style.display = 'none';
+      document.querySelector('.total-sub').textContent = 'Servicio 3 horas - Todo incluido';
+      return;
+    }
+
+    const minPizzas = calcularPizzasMinimas(inv);
+    const precioTabla = obtenerPrecio(inv);
+    let total = precioTabla * inv;
+    const aplicaMinimo = inv < 20;
+    if (aplicaMinimo) {
+      total = 270000;
+    }
+
+    // Precio por persona real (basado en el total que se cobrará)
+    const precioPorPersonaReal = total / inv;
+
+    document.getElementById('res-invitados').textContent = inv + ' personas';
+    document.getElementById('res-pizzas').textContent    = minPizzas + ' pizzas de referencia';
+    document.getElementById('res-pedazos').textContent   = 'Servicio ilimitado';
+    document.getElementById('res-precio-pp').textContent = formatCLP(precioPorPersonaReal) + ' / persona';
+    document.getElementById('res-total').textContent     = formatCLP(total);
+    document.getElementById('res-anticipo').textContent  = formatCLP(total * 0.4);
+    document.getElementById('res-resto').textContent     = formatCLP(total * 0.6);
+
+    const aviso = document.getElementById('min-aviso');
+    if (aviso) {
+      if (aplicaMinimo) {
+        aviso.style.display = 'block';
+        aviso.textContent = 'Se aplica tarifa minima de $270.000 para menos de 20 personas.';
+      } else {
+        aviso.style.display = 'none';
+      }
+    }
+    document.querySelector('.total-sub').textContent =
+      aplicaMinimo
+        ? 'Servicio 3 horas - Minimo $270.000 aplicado'
+        : 'Servicio 3 horas - Todo incluido';
   }
 
-  document.getElementById('res-hora-primera-pizza').textContent =
-    horaPrimeraPizza || '—';
+  function enviarWsp(e) {
+    e.preventDefault();
 
-  if (inv < 15) {
-    ['res-invitados','res-pizzas','res-pedazos','res-precio-pp','res-total','res-anticipo','res-resto']
-      .forEach(id => { document.getElementById(id).textContent = '—'; });
-    return;
+    const nombre  = document.getElementById('nombre').value.trim();
+    const tipo    = document.getElementById('tipo').value;
+    const inv     = parseInt(document.getElementById('invitados').value) || 0;
+    const fecha   = document.getElementById('fecha').value;
+    const horaPrimeraPizza = document.getElementById('horaPrimeraPizza').value;
+    const dir     = document.getElementById('direccion').value.trim();
+    const comuna  = document.getElementById('comuna').value.trim();
+    const tel     = document.getElementById('telefono').value.trim();
+    const coment  = document.getElementById('comentarios').value.trim();
+
+    if (!nombre || inv < 1 || !dir || !comuna || !tel || !horaPrimeraPizza) {
+      alert('Por favor completa: nombre, telefono, invitados (minimo 1), direccion, comuna y la hora de la primera pizza.');
+      return;
+    }
+
+    const min      = calcularPizzasMinimas(inv);
+    const precioTabla = obtenerPrecio(inv);
+    let total = precioTabla * inv;
+    const aplicaMinimo = inv < 20;
+    if (aplicaMinimo) {
+      total = 270000;
+    }
+    const precioPorPersonaReal = total / inv;
+
+    const fechaStr = fecha
+      ? new Date(fecha + 'T12:00:00').toLocaleDateString('es-CL', { day:'numeric', month:'long', year:'numeric' })
+      : 'No indicada';
+
+    const base  = Math.floor(min / PIZZAS_MENU.length);
+    const extra = min % PIZZAS_MENU.length;
+    let menuDet = '';
+    PIZZAS_MENU.forEach((p, i) => {
+      const qty = base + (i < extra ? 1 : 0);
+      menuDet += '\n     ' + p.nombre + ': ' + qty + ' pizzas';
+    });
+
+    const msg =
+      'COTIZACION - ROBLE PIZZAS\n\n' +
+      'Cliente: ' + nombre + '\n' +
+      'Telefono: ' + tel + '\n' +
+      'Tipo de evento: ' + (tipo || 'No indicado') + '\n' +
+      'Invitados: ' + inv + ' personas\n' +
+      'Fecha: ' + fechaStr + '\n' +
+      'Hora primera pizza: ' + horaPrimeraPizza + '\n' +
+      'Direccion: ' + dir + ', ' + comuna + '\n\n' +
+      'Pizzas de referencia: ' + min + ' (servicio ilimitado)\n' +
+      'Distribucion de referencia:' + menuDet + '\n\n' +
+      'Precio por persona: ' + formatCLP(precioPorPersonaReal) + '\n' +
+      'Total estimado: ' + formatCLP(total) +
+      (aplicaMinimo ? ' (minimo $270.000 aplicado)' : '') + '\n' +
+      'Anticipo para confirmar (40%): ' + formatCLP(total * 0.4) + '\n' +
+      'Saldo restante (60%): ' + formatCLP(total * 0.6) + '\n' +
+      (coment ? '\nComentarios: ' + coment : '') +
+      '\n\nCotizacion referencial. El total puede variar por costos de traslado u otros gastos adicionales.' +
+      '\n\n¿Quieres dejar reservada tu fecha?';
+
+    window.open('https://wa.me/56991999301?text=' + encodeURIComponent(msg), '_blank');
   }
-
-  const minPizzas = calcularPizzasMinimas(inv);
-  const preciopp  = obtenerPrecio(inv);
-  const total     = preciopp * inv;
-
-  document.getElementById('res-invitados').textContent = `${inv} personas`;
-  document.getElementById('res-pizzas').textContent    = `${minPizzas} pizzas de referencia`;
-  document.getElementById('res-pedazos').textContent   = `Servicio ilimitado 🎁`;
-  document.getElementById('res-precio-pp').textContent = `${formatCLP(preciopp)} / persona`;
-  document.getElementById('res-total').textContent     = formatCLP(total);
-  document.getElementById('res-anticipo').textContent  = formatCLP(total * 0.4);
-  document.getElementById('res-resto').textContent     = formatCLP(total * 0.6);
-}
-
- function enviarWsp(e) {
-  e.preventDefault();
-
-  const nombre  = document.getElementById('nombre').value.trim();
-  const tipo    = document.getElementById('tipo').value;
-  const inv     = parseInt(document.getElementById('invitados').value) || 0;
-  const fecha   = document.getElementById('fecha').value;
-  const horaPrimeraPizza = document.getElementById('horaPrimeraPizza').value;
-  const dir     = document.getElementById('direccion').value.trim();
-  const comuna  = document.getElementById('comuna').value.trim();
-  const tel     = document.getElementById('telefono').value.trim();
-  const coment  = document.getElementById('comentarios').value.trim();
-
-  if (!nombre || inv < 15 || !dir || !comuna || !tel || !horaPrimeraPizza) {
-    alert('⚠️ Por favor completa: nombre, teléfono, invitados (mínimo 15), dirección, comuna y la hora en que quieres que salga la primera pizza.');
-    return;
-  }
-
-  const min      = calcularPizzasMinimas(inv);
-  const preciopp = obtenerPrecio(inv);
-  const total    = preciopp * inv;
-  const fechaStr = fecha
-    ? new Date(fecha + 'T12:00:00').toLocaleDateString('es-CL', { day:'numeric', month:'long', year:'numeric' })
-    : 'No indicada';
-
-  const base  = Math.floor(min / PIZZAS_MENU.length);
-  const extra = min % PIZZAS_MENU.length;
-  let menuDet = '';
-  PIZZAS_MENU.forEach((p, i) => {
-    const qty = base + (i < extra ? 1 : 0);
-    menuDet += `\n     ${p.emoji} ${p.nombre}: ${qty} pizzas`;
-  });
-
-  const msg =
-    `🍕 *COTIZACIÓN — ROBLE PIZZAS*\n\n` +
-    `👤 *Cliente:* ${nombre}\n` +
-    `📞 *Teléfono:* ${tel}\n` +
-    `🎉 *Tipo de evento:* ${tipo || 'No indicado'}\n` +
-    `👥 *Invitados:* ${inv} personas\n` +
-    `📅 *Fecha:* ${fechaStr}\n` +
-    `🕒 *Hora de la primera pizza:* ${horaPrimeraPizza}\n` +
-    `📍 *Dirección:* ${dir}, ${comuna}\n\n` +
-    `🍕 *Pizzas de referencia:* ${min} (servicio ilimitado ♾️)\n` +
-    `🍕 *Distribución de referencia:*${menuDet}\n\n` +
-    `💵 *Precio por persona:* ${formatCLP(preciopp)}\n` +
-    `💰 *Total estimado:* ${formatCLP(total)}\n` +
-    `💳 *Anticipo para confirmar (40%):* ${formatCLP(total * 0.4)}\n` +
-    `🔄 *Saldo restante (60%):* ${formatCLP(total * 0.6)}\n` +
-    (coment ? `\n📝 *Comentarios:* ${coment}` : '') +
-    `\n\n_Cotización referencial. El total puede variar por costos de traslado u otros gastos adicionales._`;
-
-  window.open('https://wa.me/56991999301?text=' + encodeURIComponent(msg), '_blank');
-}
-  </script>
+</script>
 </body>
 </html>
