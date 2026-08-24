@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuántas Pizzas por Persona | Calculadora para Fiestas</title>
+<meta name="description" content="Calcula cuántas pizzas necesitas por persona para una fiesta. Usa esta estimación orientativa y cotiza un Pizza Party con servicio de pizza napolitana en vivo.">
+<meta name="robots" content="index, follow"><link rel="canonical" href="https://roblepizzas.cl/cuantas-pizzas-por-persona/"><meta property="og:type" content="article"><meta property="og:site_name" content="Roble Pizzas"><meta property="og:title" content="Cuántas pizzas por persona | Calculadora"><meta property="og:description" content="Una estimación rápida para planificar tu fiesta."><meta property="og:url" content="https://roblepizzas.cl/cuantas-pizzas-por-persona/"><meta property="og:image" content="https://roblepizzas.cl/Fotos/Capresse.jpg"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="../style.css">
+<style>.pizza-calculator{max-width:560px;margin:2rem auto;background:var(--blanco);border:1px solid var(--borde);border-radius:10px;padding:1.5rem;box-shadow:0 2px 20px rgba(26,16,8,.07)}.pizza-calculator label{display:block;font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--texto-suave);margin-bottom:.4rem}.pizza-calculator input{width:100%;box-sizing:border-box;border:1.5px solid var(--borde);border-radius:6px;padding:.75rem;font-size:1rem;margin-bottom:1rem}.calculator-result{background:var(--fondo-alt);border-left:3px solid var(--acento);padding:1rem;font-size:1.1rem;font-weight:700}</style>
+</head>
+<body>
+<nav class="nav scrolled"><div class="container nav__inner"><a href="../index.html" class="nav__logo"><img src="../favicon.png" alt="Roble Pizzas" style="height:52px;width:auto;display:block;border-radius:50%"></a><ul class="nav__links"><li><a href="../index.html">Inicio</a></li><li><a href="../nosotros.html">Nosotros</a></li><li><a href="../archivo.html">Galería</a></li><li><a href="../cotizar.html" class="btn btn-primary nav__cta">Cotizar evento</a></li></ul><button class="hamburger" aria-label="Menú"><span></span><span></span><span></span></button></div></nav>
+<header class="page-header" style="background:linear-gradient(90deg,rgba(13,8,4,.88),rgba(13,8,4,.42)),url('../Fotos/Capresse.jpg') center/cover"><div class="container"><span class="eyebrow" style="color:var(--acento)">Estimación orientativa</span><h1>¿Cuántas pizzas<br><em>por persona?</em></h1><p>Usa una referencia rápida para planificar tu fiesta. Si contratas un servicio ilimitado, la cifra sirve solo para organizar el menú.</p></div></header>
+<main>
+<section class="section"><div class="container text-center"><span class="eyebrow">Calculadora de fiesta</span><h2>Calcula pizzas y porciones</h2><div class="pizza-calculator" style="text-align:left"><label for="calc-invitados">Cantidad de invitados</label><input id="calc-invitados" type="number" min="1" value="20"><div class="calculator-result" id="calc-resultado">Se estiman 15 pizzas, aproximadamente 120 porciones.</div></div><p style="max-width:600px;margin:1rem auto">La referencia usa seis trozos por invitado y ocho trozos por pizza, igual que el cálculo del cotizador. No reemplaza una cotización ni considera apetito, menú o acompañamientos.</p></div></section>
+<section class="section section--alt"><div class="container intro-grid"><div><span class="eyebrow">Para no preocuparte del cálculo</span><h2>Roble Pizzas ofrece servicio ilimitado</h2><p class="intro-text">El cotizador del sitio muestra una distribución de referencia. En el evento, las pizzas se preparan y sirven durante tres horas, de acuerdo con la propuesta contratada.</p><p class="intro-text">Si todavía estás comparando alternativas, revisa <a href="../pizza-party-precios/">cómo se calcula el precio</a> o conoce <a href="../pizza-party-santiago/">el formato Pizza Party en Santiago</a>.</p><a href="../cotizar.html" class="btn btn-primary">Cotizar mi Pizza Party</a></div><div style="border-radius:8px;overflow:hidden;aspect-ratio:4/3"><img src="../Fotos/Capresse.jpg" alt="Pizza napolitana para calcular porciones de una fiesta" style="width:100%;height:100%;object-fit:cover;display:block"></div></div></section>
+</main>
+<footer class="footer"><div class="container"><div class="footer__grid"><div><div class="footer__brand-name">Roble Pizzas</div><p class="footer__desc">Pizza artesanal en vivo para tu celebración.</p></div><div><h4>Relacionado</h4><ul><li><a href="../pizza-party-precios/">Precios</a></li><li><a href="../pizzas-para-eventos/">Pizzas para eventos</a></li><li><a href="../cotizar.html">Cotizar</a></li></ul></div><div><h4>Contacto</h4><div class="footer__contact-item">📞 <span>+56 9 9199 9301</span></div></div></div></div></footer>
+<script src="../script.js"></script>
+<script>
+const guestsInput = document.getElementById('calc-invitados');
+const result = document.getElementById('calc-resultado');
+function updateCalculator() {
+  const guests = Math.max(1, parseInt(guestsInput.value, 10) || 0);
+  const pizzas = Math.ceil(guests * 6 / 8);
+  result.textContent = 'Se estiman ' + pizzas + ' pizzas, aproximadamente ' + (pizzas * 8) + ' porciones.';
+}
+guestsInput.addEventListener('input', updateCalculator);
+updateCalculator();
+</script>
+</body>
+</html>

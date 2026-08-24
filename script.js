@@ -4,6 +4,14 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  const hostname = window.location.hostname.toLowerCase();
+  if (hostname === 'www.roblepizzas.cl') {
+    const canonicalUrl = window.location.href.replace(/^https?:\/\//i, 'https://').replace('://www.roblepizzas.cl', '://roblepizzas.cl');
+    if (canonicalUrl !== window.location.href) {
+      window.location.replace(canonicalUrl);
+      return;
+    }
+  }
 
   /* Carrusel  */
   /* ── Carousel ── */
